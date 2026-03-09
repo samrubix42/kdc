@@ -317,44 +317,42 @@ new class extends Component
           <div class="client-carousel owl-carousel">
             <div class="client-carousel-item">
               <div class="client-box">
-                <img alt="" class="image-quote" style="filter:grayscale(30%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote"  src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
-                  <span class="client-name">Adam Stone</span> 
-                  <span class="client-company">/ CEO at Google INC</span>
+                  <span class="client-name">Rohit Mehta</span> 
+                  <span class="client-company">/ Director, Mehta Infrastructure Pvt. Ltd.</span>
                 </div>
-                <p class="client-description">Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup.</p>
+                <p class="client-description">KDC delivered exactly what we envisioned for our corporate office in Gurgaon. The planning, execution, and attention to detail were exceptional from concept to handover.</p>
               </div>
             </div>
             <div class="client-carousel-item">
               <div class="client-box">
-                <img alt="" class="image-quote" style="filter:grayscale(30%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote"  src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
-                  <span class="client-name">Anabella Kleva </span> 
-                  <span class="client-company">/ Managerment at Envato</span>
+                  <span class="client-name">Neha Kapoor</span> 
+                  <span class="client-company">/ Founder, Kapoor Lifestyle Homes</span>
                 </div>
-                <p class="client-description">Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup.</p>
+                <p class="client-description">Our luxury residence in South Delhi was designed with elegance and practicality. The team remained professional, transparent, and highly responsive throughout the project.</p>
               </div>
             </div>
             <div class="client-carousel-item">
-              <img alt="" class="client-img" style="filter:grayscale(30%) !important;" src="{{ asset('images/clients/1-92x92.jpg') }}">
               <div class="client-box">
-                <img alt="" class="image-quote" style="filter:grayscale(30%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote"  src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
-                  <span class="client-name">Adam Stone</span> 
-                  <span class="client-company">/ CEO at Google INC</span>
+                  <span class="client-name">Sanjay Verma</span> 
+                  <span class="client-company">/ Operations Head, Verma Auto Components</span>
                 </div>
-                <p class="client-description">Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup. Sed elit quam, iaculis sed semper sit amet udin vitae nibh</p>
+                <p class="client-description">The industrial facility designed by KDC improved workflow efficiency and safety standards significantly. Their technical understanding and site coordination were excellent.</p>
               </div>
             </div>
             <div class="client-carousel-item">
-              <img alt="" class="client-img" style="filter:grayscale(100%) !important;" src="{{ asset('images/clients/2-92x92.jpg') }}">
               <div class="client-box">
-                <img alt="" class="image-quote" style="filter:grayscale(100%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote"  src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
-                  <span class="client-name">Adam Stone</span> 
-                  <span class="client-company">/ CEO at Google INC</span>
+                  <span class="client-name">Priya Nair</span> 
+                  <span class="client-company">/ Trustee, Nair Education Foundation</span>
                 </div>
-                <p class="client-description">Sed elit quam, iaculis sed semper sit amet udin vitae nibh. at magna akal semperFusce commodo molestie luctus.Lorem ipsum Dolor tusima olatiup.</p>
+                <p class="client-description">KDC handled our institutional campus project with great commitment and creativity. Timelines were met, and the final outcome exceeded our expectations.</p>
               </div>
             </div>
           </div>
@@ -420,5 +418,4 @@ new class extends Component
       </section>
     </div>
 </div>
-
 
