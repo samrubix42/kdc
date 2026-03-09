@@ -317,7 +317,7 @@ new class extends Component
           <div class="client-carousel owl-carousel">
             <div class="client-carousel-item">
               <div class="client-box">
-                <img alt="" class="image-quote" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote" style="filter:grayscale(30%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
                   <span class="client-name">Adam Stone</span> 
                   <span class="client-company">/ CEO at Google INC</span>
@@ -327,7 +327,7 @@ new class extends Component
             </div>
             <div class="client-carousel-item">
               <div class="client-box">
-                <img alt="" class="image-quote" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote" style="filter:grayscale(30%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
                   <span class="client-name">Anabella Kleva </span> 
                   <span class="client-company">/ Managerment at Envato</span>
@@ -336,9 +336,9 @@ new class extends Component
               </div>
             </div>
             <div class="client-carousel-item">
-              <img alt="" class="client-img" src="{{ asset('images/clients/1-92x92.jpg') }}">
+              <img alt="" class="client-img" style="filter:grayscale(30%) !important;" src="{{ asset('images/clients/1-92x92.jpg') }}">
               <div class="client-box">
-                <img alt="" class="image-quote" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote" style="filter:grayscale(30%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
                   <span class="client-name">Adam Stone</span> 
                   <span class="client-company">/ CEO at Google INC</span>
@@ -347,9 +347,9 @@ new class extends Component
               </div>
             </div>
             <div class="client-carousel-item">
-              <img alt="" class="client-img" src="{{ asset('images/clients/2-92x92.jpg') }}">
+              <img alt="" class="client-img" style="filter:grayscale(100%) !important;" src="{{ asset('images/clients/2-92x92.jpg') }}">
               <div class="client-box">
-                <img alt="" class="image-quote" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                <img alt="" class="image-quote" style="filter:grayscale(100%) !important;" src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
                   <span class="client-name">Adam Stone</span> 
                   <span class="client-company">/ CEO at Google INC</span>
@@ -366,7 +366,7 @@ new class extends Component
             @endphp
             @foreach ($partnerImages as $partnerImage)
               <div class="partner-carousel-item">
-                <img alt="{{ pathinfo($partnerImage->getFilename(), PATHINFO_FILENAME) }}" src="{{ asset('images/partner/' . $partnerImage->getFilename()) }}">
+                <img alt="{{ pathinfo($partnerImage->getFilename(), PATHINFO_FILENAME) }}" style="filter:grayscale(100%) !important;" src="{{ asset('images/partner/' . $partnerImage->getFilename()) }}">
               </div>
             @endforeach
           </div>
@@ -420,3 +420,5 @@ new class extends Component
       </section>
     </div>
 </div>
+
+
