@@ -182,6 +182,8 @@ new class extends Component
         </div>
       </section>
 
+      
+
       <!-- Section Projects -->
 
       <section class="section-projects section">
@@ -288,12 +290,32 @@ new class extends Component
 
       <!-- Section Clients -->
 
+      <!-- Section CEO Message -->
+
+      <section class="section-about">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="dots-image">
+                <img alt="Mr. Vijay Kachroo" class="about-img img-responsive" src="{{ asset('images/kachroo.jpg') }}">
+                <div class="dots"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+              <strong class="section-subtitle">MESSAGE FROM CEO</strong>
+              <h2 class="section-title section-about-title">KDC Team</h2>
+              <p><img src="{{ asset('images/kdc-5.png') }}" style="height: 20px;" alt="Signature"> Consultants was founded by its Principal Architect, Vijay Kachroo, who in the field has more than two decades of rich experience. Prior to incorporation of <img src="{{ asset('images/kdc-5.png') }}" style="height: 20px;"> Consultants, Vijay Kachroo was managing the Company under the name of "Archivision". We have about two decades of working experience in the institutional, industrial and luxury residential market.</p>
+              <p><strong>Mr. Vijay Kachroo</strong><br>Principal Architect, the backbone of the Organization. As a Project Leader, he looks after the overall development of the project, starting from the conceptualization stage up till the handing over of each project.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section-clients section bg-dots">
         <div class="container">
           <h2 class="section-title">From Great Our Clients</h2>
           <div class="client-carousel owl-carousel">
             <div class="client-carousel-item">
-              <img alt="" class="client-img" src="{{ asset('images/clients/1-92x92.jpg') }}">
               <div class="client-box">
                 <img alt="" class="image-quote" src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
@@ -304,7 +326,6 @@ new class extends Component
               </div>
             </div>
             <div class="client-carousel-item">
-              <img alt="" class="client-img" src="{{ asset('images/clients/2-92x92.jpg') }}">
               <div class="client-box">
                 <img alt="" class="image-quote" src="{{ asset('images/image-icons/icon-quote.png') }}">
                 <div class="client-title">
