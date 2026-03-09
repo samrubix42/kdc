@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon.ico') }}">
 <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon.ico') }}">
 
-<title>Bauhaus - Architecture & Interior HTML Template</title> 
+<title>Architecture & Interior HTML Template</title> 
 
 <!-- Styles -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Poppins:300,400,500,600,700" rel="stylesheet">
