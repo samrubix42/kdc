@@ -15,47 +15,36 @@ new class extends Component
       <div class="footer-flex">
         <div class="flex-item">
           <a class="brand pull-left" href="#">
-            <img alt="" src="{{ asset('images/brand.png') }}">
-            <div class="brand-info">
-              <div class="brand-name">bauhaus</div>
-              <div class="brand-text">architecture</div>
-            </div>
+            <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}">
+            
           </a>
         </div>
         <div class="flex-item">
-          <div class="inline-block">� Bauhaus 2017<br>All Rights Resevered</div>
+          <div class="inline-block"><img src="{{ asset('images/kdc-5.png') }}" style="height:20px" alt=""><br>All Rights Resevered</div>
         </div>
         <div class="flex-item">
           <ul>
-            <li><a href="">Site Map</a></li>
-            <li><a href="">Term & Conditions</a></li>
-            <li><a href="">Privacy Policy</a></li>
-            <li><a href="">Help</a></li>
-            <li><a href="">Affiliatep</a></li>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#profile">PROFILE</a></li>
+            <li><a href="#our-team">OUR TEAM</a></li>
+            <li><a href="#services">SERVICES</a></li>
           </ul> 
         </div>
         <div class="flex-item">
           <ul>
-            <li><a href="">Our Location</a></li>
-            <li><a href="">Career</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+            <li><a href="#certifications">CERTIFICATIONS</a></li>
+            <li><a href="#clients">CLIENTS</a></li>
+            <li><a href="#footer">CONTACT</a></li>
           </ul> 
         </div>
-        <div class="flex-item">
-          <ul>
-            <li class="active"><a href="">ENG</a></li>
-            <li><a href="">FRA</a></li>
-            <li><a href="">GER</a></li>
-          </ul> 
-        </div>
+      
         <div class="flex-item">
           <div class="social-list">
-            <a href="" class="icon ion-social-twitter"></a>
             <a href="" class="icon ion-social-facebook"></a>
-            <a href="" class="icon ion-social-googleplus"></a>
+            <a href="" class="icon ion-social-whatsapp"></a>
             <a href="" class="icon ion-social-linkedin"></a>
-            <a href="" class="icon ion-social-dribbble-outline"></a>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ new class extends Component
 ?>
 
 <div>
- <main class="jumbotron">
+ <main id="home" class="jumbotron">
 
       <!-- Start revolution slider -->
 
@@ -157,7 +157,7 @@ new class extends Component
 
       <!-- Section About -->
 
-      <section class="section-about">
+      <section id="profile" class="section-about">
         <div class="container">
           <div class="row">
             <div class="col-md-6">
@@ -186,7 +186,7 @@ new class extends Component
 
       <!-- Section Projects -->
 
-      <section class="section-projects section">
+      <section id="projects" class="section-projects section">
         <div class="container">
           <div class="row">
             <div class="col-lg-5">
@@ -311,7 +311,7 @@ new class extends Component
         </div>
       </section>
 
-      <section class="section-clients section bg-dots">
+      <section id="clients" class="section-clients section bg-dots">
         <div class="container">
           <h2 class="section-title">From Great Our Clients</h2>
           <div class="client-carousel owl-carousel">
@@ -377,7 +377,7 @@ new class extends Component
 
       <section class="section-news section">
         <div class="container">
-          <h2 class="section-title">Latest News <a href="" class="link-arrow-2 pull-right">All Articles <i class="icon ion-ios-arrow-right"></i></a></h2>
+          <h2 class="section-title">Latest Blog <a href="" class="link-arrow-2 pull-right">All Articles <i class="icon ion-ios-arrow-right"></i></a></h2>
           <div class="news-carousel owl-carousel">
             <div class="news-item">
               <img alt="" src="{{ asset('images/news/1-370x370.jpg') }}">
