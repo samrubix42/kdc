@@ -138,21 +138,21 @@ body{
 
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: #cee002;
+  background: #95BF19;
 }
 
 ::selection{
-  background-color:#cee002;
+  background-color:#95BF19;
   color:#fff;
 }
 
 -webkit-::selection{
-    background-color:#cee002;
+    background-color:#95BF19;
     color:#fff;
 }
 
 ::-moz-selection{
-    background-color:#cee002;
+    background-color:#95BF19;
     color:#fff;
 }
 
@@ -279,7 +279,7 @@ blockquote{
   padding: 0;
   width: 80%;
   padding-left: 6.8rem;
-  border-left: 0.3rem solid #cee002;
+  border-left: 0.3rem solid #95BF19;
   margin-top: 5rem;
   color:#000;
 }
@@ -305,7 +305,7 @@ cite{
 }
 
 a {
-  color:#cee002;
+  color:#95BF19;
   -webkit-transition: color .3s ease-out;
        -o-transition: color .3s ease-out;
           transition: color .3s ease-out;
@@ -313,7 +313,7 @@ a {
 
 a:hover,
 a:focus {
-  color:#cee002;
+  color:#95BF19;
   outline: none;
 }
 
@@ -371,7 +371,7 @@ input[type='email']:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 textarea:focus{
-  border-color: #cee002;
+  border-color: #95BF19;
   outline: 0;
 }
 
@@ -417,7 +417,7 @@ textarea::-webkit-input-placeholder {
 }
 
 input.error{
-  border-color: #cee002;
+  border-color: #95BF19;
 }
 
 .mc-label,
@@ -450,7 +450,7 @@ label.error{
 
 .btn:hover,
 .btn:focus{
-  background-color:#cee002;
+  background-color:#95BF19;
   color: #fff;
   -webkit-box-shadow:none;
   box-shadow: none;
@@ -464,7 +464,7 @@ label.error{
 
 
 .btn-yellow{
-  background: #cee002;
+  background: #95BF19;
   color: #000;
 }
 
@@ -526,7 +526,7 @@ label.error{
 
 .link-arrow:hover,
 .link-arrow-2:hover{
-  color: #cee002;
+  color: #95BF19;
   text-decoration:none;
 }
 
@@ -582,7 +582,7 @@ label.error{
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #cee002;
+  background-color: #95BF19;
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -630,7 +630,7 @@ label.error{
 }
 
 .text-primary{
-  color: #cee002;
+  color: #95BF19;
 }
 
 .masked{
@@ -750,7 +750,7 @@ a.brand:focus{
 }
 
 .navbar-toggle:hover .icon-bar{
-  background-color:  #cee002;
+  background-color:  #95BF19;
 }
 
 .navbar .social-list{
@@ -775,7 +775,7 @@ a.brand:focus{
 }
 
 .social-list a:hover{
-  color:#cee002;
+  color:#95BF19;
   text-decoration: none;
 }
 
@@ -849,7 +849,7 @@ a.brand:focus{
 }
 
 .close-menu:hover{
-  color: #cee002;
+  color: #95BF19;
 }
 
 .menu .menu-lang{
@@ -880,7 +880,7 @@ a.brand:focus{
 
 .menu-lang .active,
 .menu-lang a:hover{
-  color: #cee002;
+  color: #95BF19;
   text-decoration: none;
 }
 
@@ -976,7 +976,7 @@ a.brand:focus{
 }
 
 .menu-footer .social-list a:hover{
-  color:#cee002;
+  color:#95BF19;
 }
 
 .menu-footer .copy{
@@ -1080,7 +1080,7 @@ a.brand:focus{
   font-size: 1.142rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #cee002;
+  color: #95BF19;
   margin-bottom: 1rem;
 }
 
@@ -1108,7 +1108,7 @@ a.brand:focus{
 }
 
 .rev_slider .link-arrow:hover{
-  color:#cee002;
+  color:#95BF19;
 }
 
 .rev_slider .link-arrow:hover .icon{
@@ -1144,7 +1144,7 @@ a.brand:focus{
 
 .slider-prev:hover,
 .slider-next:hover{
-  color:#cee002;
+  color:#95BF19;
 }
 
 
@@ -1206,7 +1206,7 @@ a.brand:focus{
   vertical-align: middle;
   width: 12.15rem;
   height: 12.15rem;
-  border:0.357rem solid #cee002;
+  border:0.357rem solid #95BF19;
 }
 
 .experience-content{
@@ -1274,7 +1274,7 @@ a.brand:focus{
 
 .filter li a:hover,
 .filter .active a{
-  color: #cee002;
+  color: #95BF19;
   text-decoration: none;
 }
 
@@ -1298,7 +1298,7 @@ a.brand:focus{
 
 .view-projects:hover{
   text-decoration: none;
-  color: #cee002;
+  color: #95BF19;
 }
 
 
@@ -1346,7 +1346,7 @@ a.brand:focus{
 
 .owl-prev:hover,
 .owl-next:hover{
-  color: #cee002;
+  color: #95BF19;
 }
 
 .owl-dots{
@@ -1368,7 +1368,7 @@ a.brand:focus{
 }
 
 .owl-dot.active span{
-  background-color: #cee002;
+  background-color: #95BF19;
 }
 
 .project-item{
@@ -1623,7 +1623,7 @@ a.brand:focus{
 .hover-border div::before {
   position: absolute;
   content: "";
-  background:#cee002;
+  background:#95BF19;
   height: 2px;
   width: 100%;
   left: 0;
@@ -1640,7 +1640,7 @@ a.brand:focus{
 .hover-border::after {
   position: absolute;
   content: "";
-  background:#cee002;
+  background:#95BF19;
   width: 2px;
   height: 100%;
   right: 0;
@@ -1657,7 +1657,7 @@ a.brand:focus{
 .hover-border div::after {
   position: absolute;
   content: "";
-  background:#cee002;
+  background:#95BF19;
   width: 100%;
   height: 2px;
   right: 0;
@@ -1674,7 +1674,7 @@ a.brand:focus{
 .hover-border::before {
   position: absolute;
   content: "";
-  background:#cee002;
+  background:#95BF19;
   width: 2px;
   height: 100%;
   left: 0;
@@ -1853,7 +1853,7 @@ a.brand:focus{
 }
 
 .navbar-white  .social-list a:hover{
-  color: #cee002;
+  color: #95BF19;
 }
 
 .copy-bottom{
@@ -1896,7 +1896,7 @@ a.brand:focus{
 
 .lang-bottom .menu-lang  a:hover,
 .lang-bottom.white .menu-lang  a:hover{
-  color: #cee002;
+  color: #95BF19;
 }
 
 #pp-nav{
@@ -1951,7 +1951,7 @@ a.brand:focus{
 #pp-nav .pp-nav-down:hover,
 #pp-nav.white .pp-nav-up:hover,
 #pp-nav.white .pp-nav-down:hover{
-  color: #cee002;
+  color: #95BF19;
 }
 
 #pp-nav.white .pp-nav-up,
@@ -1965,7 +1965,7 @@ a.brand:focus{
 
 #pp-nav li .active span, .pp-slidesNav .active span,
 #pp-nav span:hover, .pp-slidesNav span:hover{
-  background: #cee002;
+  background: #95BF19;
 }
 
 
@@ -2099,7 +2099,7 @@ a.brand:focus{
   margin-bottom: 0;
   height: 0.2858rem;
   width: 7.142rem;
-  background: #cee002;
+  background: #95BF19;
 }
 
 .title-uppercase{
@@ -2252,7 +2252,7 @@ a.brand:focus{
 }
 
 .project-box:hover{
-  background: #cee002;
+  background: #95BF19;
   text-decoration: none;
   border-color: transparent;
 }
@@ -2295,7 +2295,7 @@ a.brand:focus{
 .icon-quote{
   display: inline-block;
   margin-top: -0.6rem;
-  color:#cee002;
+  color:#95BF19;
   font-size: 5.14rem;
 }
 
@@ -2485,7 +2485,7 @@ a.brand:focus{
   width: 7rem;
   max-width: 100%;
   height: 0.28rem;
-  background: #cee002;
+  background: #95BF19;
 }
 
 .title-info{
@@ -2692,7 +2692,7 @@ a.brand:focus{
 
 .prev:hover,
 .next:hover{
-  color: #cee002;
+  color: #95BF19;
 }
 
 .prev{
@@ -2768,7 +2768,7 @@ a.brand:focus{
 }
 
 .project-detail-control:hover{
-   color:#cee002;
+   color:#95BF19;
 }
 
 .project-detail-control .show-info{
@@ -2880,7 +2880,7 @@ a.brand:focus{
 }
 
 .card:hover .card-block{
-  background: #cee002;
+  background: #95BF19;
 }
 
 
@@ -2917,7 +2917,7 @@ a.brand:focus{
 }
 
 .card-row:hover{
-  background: #cee002;
+  background: #95BF19;
 }
 
 .card-row .card-block{
@@ -2977,7 +2977,7 @@ a.brand:focus{
 }
 
 .posted-on a:hover{
-  color:#cee002;
+  color:#95BF19;
   text-decoration: none;
 }
 
@@ -3052,7 +3052,7 @@ a.brand:focus{
 }
 
 .post-share a:hover{
-  color:#cee002;
+  color:#95BF19;
 }
 
 
@@ -3117,7 +3117,7 @@ a.brand:focus{
 }
 
 .comment-metadata .fn a:hover{
-  color: #cee002;
+  color: #95BF19;
   text-decoration: none;
 }
 
@@ -3199,7 +3199,7 @@ a.brand:focus{
 .widget_meta li a:hover,
 .widget_recent_entries li a:hover,
 .widget_nav_menu li a:hover{
-   color:#cee002;
+   color:#95BF19;
    text-decoration:none;
 }
 
@@ -3322,7 +3322,7 @@ a.brand:focus{
 }
 
 .post-title:hover{
-  color: #cee002;
+  color: #95BF19;
   text-decoration: none;
 }
 
@@ -3504,7 +3504,7 @@ a.brand:focus{
 }
 
 .add-new-team:hover{
-  background: #cee002;
+  background: #95BF19;
   border-color: transparent;
 }
 
@@ -3619,7 +3619,7 @@ a.brand:focus{
 
 .footer ul .active a,
 .footer ul li a:hover{
-  color:#cee002;
+  color:#95BF19;
   text-decoration: none;
 }
 
