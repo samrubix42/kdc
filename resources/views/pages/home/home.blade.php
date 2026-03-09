@@ -178,7 +178,7 @@ new class extends Component
                     </div>
                     <div class="col-md-5 col-md-offset-1">
                         <div class="dots-image">
-                            <img alt="" class="about-img img-responsive" src="{{ asset('images/1-470x660.jpg') }}">
+                            <img alt="" class="about-img img-responsive" src="{{ asset('building/19112.jpg') }}">
                             <div class="dots"></div>
                         </div>
                     </div>
