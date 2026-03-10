@@ -6,19 +6,8 @@ use Livewire\Attributes\Layout;
 
 new #[Layout('layouts::admin')] class extends Component {
 
-    public $blogs;
     public $deleteModal = false;
     public $blogId;
-
-    public function mount()
-    {
-        $this->loadBlogs();
-    }
-
-    public function loadBlogs()
-    {
-        $this->blogs = Blog::with('category')->latest()->get();
-    }
 
     public function confirmDelete($id)
     {
@@ -26,107 +15,170 @@ new #[Layout('layouts::admin')] class extends Component {
         $this->deleteModal = true;
     }
 
-    public function closeDeleteModal()
-    {
-        $this->deleteModal = false;
-    }
-
     public function delete()
     {
         Blog::findOrFail($this->blogId)->delete();
         $this->deleteModal = false;
-        $this->loadBlogs();
+        $this->dispatch('toast-show', ['message' => 'Blog post deleted!', 'type' => 'success']);
+    }
+
+    public function with()
+    {
+        return [
+            'blogs' => Blog::with('category')->latest()->get()
+        ];
     }
 };
 ?>
 
-<div class="p-6">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold text-slate-700">
-            Blogs
-        </h2>
+    <!-- Header Section -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Articles & Blog Posts</h1>
+            <p class="text-sm text-slate-500 mt-1">Manage your website's publications and insights.</p>
+        </div>
         <a
             href="{{ route('admin.blog.add') }}"
             wire:navigate
-            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">
-            Add Blog
+            class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-semibold transition-all shadow-md active:scale-95">
+            <i class="ri-article-line text-lg"></i>
+            Create New Article
         </a>
     </div>
 
-    {{-- TABLE --}}
-    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-        <table class="w-full">
-            <thead class="bg-gray-100 text-sm text-gray-600">
-                <tr>
-                    <th class="p-3 text-left">Image</th>
-                    <th class="p-3 text-left">Title</th>
-                    <th class="p-3 text-left">Category</th>
-                    <th class="p-3 text-left">Status</th>
-                    <th class="p-3 text-left">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($blogs as $blog)
-                <tr class="border-t">
-                    <td class="p-3">
-                        @if($blog->image)
-                        <img src="{{ Storage::url($blog->image) }}" class="w-12 h-12 object-cover rounded-lg">
-                        @else
-                        <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-400">No Image</div>
-                        @endif
-                    </td>
-                    <td class="p-3">{{ $blog->title }}</td>
-                    <td class="p-3 text-gray-500">{{ $blog->category->name }}</td>
-                    <td class="p-3">
-                        @if($blog->is_active)
-                        <span class="text-green-600">Active</span>
-                        @else
-                        <span class="text-red-500">Inactive</span>
-                        @endif
-                    </td>
-                    <td class="p-3 flex gap-3">
-                        <a
-                            href="{{ route('admin.blog.update', $blog->id) }}"
-                            wire:navigate
-                            class="text-blue-600">
-                            Edit
-                        </a>
-                        <button
-                            wire:click="confirmDelete({{ $blog->id }})"
-                            class="text-red-600">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <!-- Table Card -->
+    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-200">
+                        <th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest">Featured</th>
+                        <th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest">Details</th>
+                        <th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest">Category</th>
+                        <th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest">Status</th>
+                        <th class="px-6 py-4 text-[11px] font-bold text-slate-500 uppercase tracking-widest text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @forelse($blogs as $blog)
+                    <tr class="hover:bg-slate-50/50 transition-colors group">
+                        <td class="px-6 py-4">
+                            @if($blog->image)
+                            <img src="{{ Storage::url($blog->image) }}" class="w-16 h-12 object-cover rounded-xl shadow-sm border border-slate-100">
+                            @else
+                            <div class="w-16 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+                                <i class="ri-image-line text-slate-300"></i>
+                            </div>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4">
+                            <h4 class="text-sm font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">{{ $blog->title }}</h4>
+                            <p class="text-[10px] text-slate-400 mt-0.5 tracking-tight uppercase">/{{ $blog->slug }}</p>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-bold bg-indigo-50 text-indigo-600 border border-indigo-100">
+                                {{ $blog->category->name }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            @if($blog->is_active)
+                            <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-600 border border-emerald-100">
+                                <span class="w-1 h-1 rounded-full bg-emerald-600"></span>
+                                PUBLISHED
+                            </span>
+                            @else
+                            <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200">
+                                DRAFT
+                            </span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex justify-end items-center gap-2">
+                                <a
+                                    href="{{ route('admin.blog.update', $blog->id) }}"
+                                    wire:navigate
+                                    class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
+                                    title="Edit">
+                                    <i class="ri-edit-circle-line text-lg"></i>
+                                </a>
+                                <button
+                                    wire:click="confirmDelete({{ $blog->id }})"
+                                    class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all"
+                                    title="Delete">
+                                    <i class="ri-delete-bin-line text-lg"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="5" class="px-6 py-24 text-center">
+                            <div class="flex flex-col items-center gap-4">
+                                <i class="ri-article-line text-6xl text-slate-200"></i>
+                                <div class="space-y-1">
+                                    <p class="text-lg font-bold text-slate-800">No blog posts found</p>
+                                    <p class="text-sm text-slate-400">Time to write something interesting!</p>
+                                </div>
+                                <a href="{{ route('admin.blog.add') }}" class="mt-2 text-blue-600 font-bold text-sm underline decoration-2 underline-offset-4">Start your first post</a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    {{-- DELETE MODAL --}}
-    @if($deleteModal)
-    <div class="fixed inset-0 flex items-center justify-center bg-black/40">
-        <div class="bg-white rounded-xl p-6 w-full max-w-sm">
-            <h3 class="text-lg font-semibold text-gray-700 mb-4">
-                Delete Blog
-            </h3>
-            <p class="text-gray-500 mb-6">
-                Are you sure you want to delete this blog post?
+    <!-- Delete Confirmation Modal (Pines UI Style) -->
+    <div
+        x-data="{ show: @entangle('deleteModal') }"
+        x-show="show"
+        x-cloak
+        class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div
+            x-show="show"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            @click="show = false"
+            class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm shadow-2xl"></div>
+
+        <div
+            x-show="show"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+            x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+            x-transition:leave-end="opacity-0 scale-95 translate-y-4"
+            class="relative w-full max-w-sm bg-white rounded-3xl shadow-2xl p-8 text-center border border-slate-200">
+            <div class="w-16 h-16 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i class="ri-error-warning-line text-3xl"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-slate-800">Delete Post?</h3>
+            <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+                This article will be removed from your website immediately. This action cannot be undone.
             </p>
-            <div class="flex justify-end gap-3">
+
+            <div class="mt-8 grid grid-cols-2 gap-3">
                 <button
-                    wire:click="closeDeleteModal"
-                    class="px-4 py-2 bg-gray-200 rounded-lg">
-                    Cancel
+                    @click="show = false"
+                    class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors">
+                    Keep it
                 </button>
                 <button
                     wire:click="delete"
-                    class="px-4 py-2 bg-red-500 text-white rounded-lg">
-                    Delete
+                    class="px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-sm font-bold shadow-md shadow-rose-100 active:scale-95 transition-all">
+                    Delete Link
                 </button>
             </div>
         </div>
     </div>
-    @endif
+
 </div>
