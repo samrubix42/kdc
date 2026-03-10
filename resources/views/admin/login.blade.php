@@ -13,7 +13,7 @@ new #[Layout('layouts::guest')] class extends Component
     public function mount(): void
     {
         if (Auth::check()) {
-            $this->redirectRoute('admin.dashboard', navigate: true);
+            $this->redirect->route('admin.dashboard', navigate: true);
         }
     }
 
