@@ -21,70 +21,75 @@ new class extends Component
 
 <header 
     x-data="{ profileOpen:false }"
-    class="bg-white border-b h-16 flex items-center justify-between px-6">
+    class="h-16 flex items-center justify-between px-6 bg-slate-50">
 
     {{-- LEFT SECTION --}}
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-5">
 
-        {{-- MOBILE MENU BUTTON --}}
+        {{-- MOBILE MENU --}}
         <button 
             @click="$dispatch('toggle-sidebar')"
-            class="lg:hidden p-2 rounded hover:bg-gray-100">
+            class="lg:hidden p-2 rounded-lg hover:bg-sky-100 transition">
 
-            <i class="ri-menu-line text-xl"></i>
+            <i class="ri-menu-line text-xl text-sky-600"></i>
 
         </button>
 
-        <h1 class="text-lg font-semibold text-gray-700">
+        {{-- PAGE TITLE --}}
+        <h1 class="text-lg font-semibold text-slate-700">
             Admin Dashboard
         </h1>
 
     </div>
 
     {{-- RIGHT SECTION --}}
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-4">
 
         {{-- SEARCH --}}
-        <div class="hidden md:block">
+        <div class="hidden md:flex items-center bg-white rounded-full px-4 py-2 shadow-sm">
+
+            <i class="ri-search-line text-slate-400 mr-2"></i>
+
             <input
                 type="text"
                 placeholder="Search..."
-                class="border rounded-lg px-3 py-1.5 focus:outline-none focus:ring w-64">
+                class="bg-transparent text-sm focus:outline-none w-48 placeholder-slate-400">
+
         </div>
 
-        {{-- NOTIFICATIONS --}}
-        <button class="relative p-2 rounded hover:bg-gray-100">
+        {{-- NOTIFICATION --}}
+        <button class="relative p-2 rounded-full hover:bg-sky-100 transition">
 
-            <i class="ri-notification-3-line text-xl"></i>
+            <i class="ri-notification-3-line text-xl text-slate-600"></i>
 
-            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse"></span>
 
         </button>
 
-        {{-- USER DROPDOWN --}}
+        {{-- PROFILE --}}
         <div class="relative">
 
             <button
                 @click="profileOpen = !profileOpen"
-                class="flex items-center gap-3">
+                class="flex items-center gap-3 hover:bg-sky-100 px-3 py-1.5 rounded-full transition">
 
                 <img
-                    src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}"
-                    class="w-9 h-9 rounded-full border">
+                    src="https://ui-avatars.com/api/?background=random&name={{ urlencode($user->name) }}"
+                    class="w-9 h-9 rounded-full shadow-sm">
 
                 <div class="hidden md:block text-left">
 
-                    <div class="text-sm font-medium">
+                    <div class="text-sm font-semibold text-slate-700 leading-none">
                         {{ $user->name }}
                     </div>
 
-                    <div class="text-xs text-gray-500">
-                        Admin
+                    <div class="text-xs text-slate-400">
+                        Administrator
                     </div>
 
                 </div>
 
-                <i class="ri-arrow-down-s-line"></i>
+                <i class="ri-arrow-down-s-line text-slate-500"></i>
 
             </button>
 
@@ -93,29 +98,29 @@ new class extends Component
                 x-show="profileOpen"
                 @click.outside="profileOpen=false"
                 x-transition
-                class="absolute right-0 mt-3 w-48 bg-white border rounded-lg shadow-lg">
+                class="absolute right-0 mt-3 w-52 bg-white rounded-xl shadow-lg overflow-hidden">
 
                 <a href="#"
-                   class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+                   class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-sky-50 transition">
 
-                    <i class="ri-user-line"></i>
+                    <i class="ri-user-line text-sky-600"></i>
                     Profile
 
                 </a>
 
                 <a href="#"
-                   class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+                   class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-sky-50 transition">
 
-                    <i class="ri-settings-3-line"></i>
+                    <i class="ri-settings-3-line text-sky-600"></i>
                     Settings
 
                 </a>
 
                 <button
                     wire:click="logout"
-                    class="w-full text-left flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+                    class="w-full text-left flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-red-50 transition">
 
-                    <i class="ri-logout-box-line"></i>
+                    <i class="ri-logout-box-line text-red-500"></i>
                     Logout
 
                 </button>
