@@ -9,49 +9,28 @@ new class extends Component
 ?>
 
 <div>
+    @php
+        $navItems = [
+            ['label' => 'Home', 'route' => 'home'],
+            ['label' => 'Projects', 'route' => 'project'],
+            ['label' => 'Profile', 'route' => 'profile'],
+            ['label' => 'Service', 'route' => 'service'],
+            ['label' => 'Clients', 'route' => 'client'],
+            ['label' => 'Blog', 'route' => 'blog'],
+            ['label' => 'Contact', 'route' => 'contact'],
+        ];
+    @endphp
+
     <!-- Navbar -->
     <div class="menu">
         <span class="close-menu icon-cross2 right-boxed"></span>
 
         <ul class="menu-list right-boxed">
-            <li class="active">
-                <a href="/">Home</a>
-             
-            </li>
-            <li>
-                <a href="works.html">Projects</a>
-                <ul>
-                    <li><a href="works-grid.html">Grid</a></li>
-                    <li><a href="works-masonry.html">Masonry</a></li>
-                    <li><a href="works-carousel.html">Carousel</a></li>
-                    <li><a href="project-detail.html">Project Detail</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Profile</a>
-
-            </li>
-            <li>
-                <a href="#">Service</a>
-                <ul>
-                    <li><a href="post-image.html">Image</a></li>
-                    <li><a href="post-gallery.html">Gallery</a></li>
-                    <li><a href="post-video.html">Video</a></li>
-                    <li><a href="post-right-sidebar.html">Right Sidebar</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Gallery</a>
-            </li>
-            <li>
-                <a href="#">Certifications</a>
-            </li>
-            <li>
-                <a href="#">Clients</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
+            @foreach ($navItems as $navItem)
+                <li class="{{ request()->routeIs($navItem['route']) ? 'active' : '' }}">
+                    <a href="{{ route($navItem['route']) }}">{{ $navItem['label'] }}</a>
+                </li>
+            @endforeach
         </ul>
         <div class="menu-footer right-boxed">
             <div class="social-list">
@@ -70,7 +49,9 @@ new class extends Component
             <span class="icon-bar"></span>
         </button>
 
-        <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}" style="height: auto; width: 170px;">
+        <a href="{{ route('home') }}">
+            <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}" style="height: auto; width: 170px;">
+        </a>
 
 
         <div class="social-list hidden-xs">

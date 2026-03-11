@@ -13,7 +13,7 @@ new #[Layout('layouts::guest')] class extends Component
     public function mount(): void
     {
         if (Auth::check()) {
-            $this->redirect->route('admin.dashboard', navigate: true);
+            $this->redirect('/admin');
         }
     }
 
@@ -32,7 +32,7 @@ new #[Layout('layouts::guest')] class extends Component
 
         request()->session()->regenerate();
 
-        $this->redirectRoute('admin.dashboard', navigate: true);
+        $this->redirect('/admin');
     }
 };
 ?>

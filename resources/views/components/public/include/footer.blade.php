@@ -9,12 +9,27 @@ new class extends Component
 ?>
 
 <div>
+   @php
+      $footerColumnOne = [
+         ['label' => 'HOME', 'route' => 'home'],
+         ['label' => 'PROJECTS', 'route' => 'project'],
+         ['label' => 'PROFILE', 'route' => 'profile'],
+         ['label' => 'SERVICES', 'route' => 'service'],
+      ];
+
+      $footerColumnTwo = [
+         ['label' => 'CLIENTS', 'route' => 'client'],
+         ['label' => 'BLOG', 'route' => 'blog'],
+         ['label' => 'CONTACT', 'route' => 'contact'],
+      ];
+   @endphp
+
    <!-- Footer -->
 
     <footer id="footer" class="footer section"> 
       <div class="footer-flex">
         <div class="flex-item">
-          <a class="brand pull-left" href="#">
+          <a class="brand pull-left" href="{{ route('home') }}">
             <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}">
             
           </a>
@@ -24,19 +39,16 @@ new class extends Component
         </div>
         <div class="flex-item">
           <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#profile">PROFILE</a></li>
-            <li><a href="#our-team">OUR TEAM</a></li>
-            <li><a href="#services">SERVICES</a></li>
+            @foreach ($footerColumnOne as $item)
+              <li><a href="{{ route($item['route']) }}">{{ $item['label'] }}</a></li>
+            @endforeach
           </ul> 
         </div>
         <div class="flex-item">
           <ul>
-            <li><a href="#gallery">GALLERY</a></li>
-            <li><a href="#certifications">CERTIFICATIONS</a></li>
-            <li><a href="#clients">CLIENTS</a></li>
-            <li><a href="#footer">CONTACT</a></li>
+            @foreach ($footerColumnTwo as $item)
+              <li><a href="{{ route($item['route']) }}">{{ $item['label'] }}</a></li>
+            @endforeach
           </ul> 
         </div>
       
