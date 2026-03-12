@@ -68,13 +68,7 @@ class AdminSidebar
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],
-            (object)[
-                'title' => 'Package Enquiries',
-                'icon' => 'ri-package-line',
-                'url' => Route::has('admin.package-enquiry') ? route('admin.package-enquiry') : '#',
-                'hasSubmenu' => false,
-                'submenu' => [],
-            ],
+         
             (object)[
                 'title' => 'Testimonials',
                 'icon' => 'ri-message-3-line',
