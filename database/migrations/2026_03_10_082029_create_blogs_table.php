@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->foreignId('category_id')->constrained('blog_categories')->onDelete('cascade');
+            $table->string('description')->nullable();
             $table->string('slug');
             $table->text('content');
-            $table->foreignId('category_id')->constrained('blog_categories')->onDelete('cascade');
+            $table->text('tags')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();

@@ -11,4 +11,9 @@ class BlogCategory extends Model
         'slug',
         'is_active'
     ];
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'category_id');
+    }
 }

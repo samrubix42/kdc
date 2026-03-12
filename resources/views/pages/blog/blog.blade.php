@@ -1,10 +1,24 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Blog;
+use App\Models\BlogCategory;
+use Illuminate\Support\Str;
 
-new class extends Component
-{
-    //
+new class extends Component {
+    public function with(): array
+    {
+        return [
+            'categories' => BlogCategory::where('is_active', true)
+                ->whereHas('blogs', fn ($q) => $q->where('is_active', true))
+                ->orderBy('name')
+                ->get(),
+            'blogs' => Blog::with('category')
+                ->where('is_active', true)
+                ->latest()
+                ->get(),
+        ];
+    }
 };
 ?>
 
@@ -19,139 +33,45 @@ new class extends Component
           <div class="filter-content-3">
             <ul class="filter js-filter">
               <li class="active"><a href="#" data-filter="*">All</a></li>
-              <li><a href="#" data-filter=".inspiration">Inspiration</a></li>
-              <li><a href="#" data-filter=".architecture-inteior">Architecture & Inteior</a></li>
-              <li><a href="#" data-filter=".decoration">Decoration</a></li>
-              <li><a href="#" data-filter=".plants">Plants</a></li>
+              @foreach($categories as $category)
+              <li>
+                <a href="#" data-filter=".{{ $category->slug }}">{{ $category->name }}</a>
+              </li>
+              @endforeach
             </ul>
           </div>
           <div class="grid-items js-isotope js-grid-items">
-            <div class="grid-item inspiration js-isotope-item js-grid-item">
+            @forelse($blogs as $blog)
+            <div class="grid-item {{ $blog->category?->slug ?: 'general' }} js-isotope-item js-grid-item">
               <div class="news-item">
-                <img alt="" src="images/news/1-370x370.jpg">
+                <img
+                  alt="{{ $blog->title }}"
+                  src="{{ $blog->image ? Storage::url($blog->image) : asset('images/news/1-370x370.jpg') }}">
                 <div class="news-hover">
                   <div class="hover-border"><div></div></div>
                   <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
+                    <div class="time">{{ $blog->created_at?->format('M jS, Y') }}</div>
+                    <h3 class="news-title">{{ $blog->title }}</h3>
+                    <p class="news-description">
+                      {{ $blog->description ?: Str::limit(strip_tags($blog->content), 120) }}
+                    </p>
                   </div>
-                  <a class="read-more" href="#">Continue</a>
+                  <a class="read-more" href="{{ route('blog.detail', $blog->slug) }}">Continue</a>
                 </div>
               </div>
             </div>
-            <div class="grid-item inspiration js-isotope-item js-grid-item">
+            @empty
+            <div class="grid-item js-isotope-item js-grid-item">
               <div class="news-item">
-                <img alt="" src="images/news/2-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
+                <div class="news-hover" style="position:relative; opacity:1;">
                   <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
+                    <h3 class="news-title">No blog posts found</h3>
+                    <p class="news-description">Please check back soon for new articles.</p>
                   </div>
-                  <a class="read-more" href="#">Continue</a>
                 </div>
               </div>
             </div>
-            <div class="grid-item architecture-inteior js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/3-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid-item architecture-inteior js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/4-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid-item decoration js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/5-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid-item decoration js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/6-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid-item plants js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/7-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid-item plants js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/8-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
-            <div class="grid-item plants js-isotope-item js-grid-item">
-              <div class="news-item">
-                <img alt="" src="images/news/9-370x370.jpg">
-                <div class="news-hover">
-                  <div class="hover-border"><div></div></div>
-                  <div class="content">
-                    <div class="time">Dec 15th, 2016</div>
-                    <h3 class="news-title">Discover Architecture Of Bario</h3>
-                    <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                  </div>
-                  <a class="read-more" href="#">Continue</a>
-                </div>
-              </div>
-            </div>
+            @endforelse
           </div>
         </div>
       </div>

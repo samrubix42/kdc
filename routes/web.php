@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::livewire('/', 'pages::home.home')->name('home');
 Route::livewire('/login', 'admin::login')->name('login');
 Route::livewire('/blog', 'pages::blog.blog')->name('blog');
-Route::livewire('/blog/{slug}', 'pages::blog.blog-detail')->name('blog.detail');
+Route::livewire('/blog/{slug}', 'pages::blog.blog-view')->name('blog.detail');
 Route::livewire('/contact', 'pages::contact.contact')->name('contact'); 
 Route::livewire('/service', 'pages::service.service')->name('service');
 Route::livewire('/client', 'pages::client.client')->name('client');

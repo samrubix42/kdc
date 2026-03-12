@@ -11,8 +11,10 @@ new #[Layout('layouts::admin')] class extends Component {
     use WithFileUploads;
 
     public $title;
+    public $description;
     public $slug;
     public $content;
+    public $tags;
     public $category_id;
     public $meta_title;
     public $meta_description;
@@ -22,8 +24,10 @@ new #[Layout('layouts::admin')] class extends Component {
 
     protected $rules = [
         'title' => 'required|string|max:255',
+        'description' => 'nullable|string|max:500',
         'slug' => 'required|string|max:255|unique:blogs,slug',
         'content' => 'required|string',
+        'tags' => 'nullable|string|max:500',
         'category_id' => 'required|exists:blog_categories,id',
         'meta_title' => 'nullable|string|max:255',
         'meta_description' => 'nullable|string',
@@ -48,8 +52,10 @@ new #[Layout('layouts::admin')] class extends Component {
 
         Blog::create([
             'title' => $this->title,
+            'description' => $this->description,
             'slug' => $this->slug,
             'content' => $this->content,
+            'tags' => $this->tags,
             'category_id' => $this->category_id,
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
@@ -138,6 +144,24 @@ new #[Layout('layouts::admin')] class extends Component {
                         </div>
 
                         @error('slug')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+
+                    </div>
+
+                    <div>
+
+                        <label class="text-xs font-medium text-slate-600">
+                            Short Description
+                        </label>
+
+                        <textarea
+                            wire:model="description"
+                            rows="3"
+                            class="w-full mt-1 border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                            placeholder="Brief summary for listing and preview"></textarea>
+
+                        @error('description')
                         <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                         @enderror
 
@@ -233,6 +257,27 @@ this.content = editor.getContent()
                         <input
                             wire:model="meta_keywords"
                             class="w-full mt-1 border border-slate-300 rounded-md px-3 py-2 text-sm">
+
+                    </div>
+
+                    <div>
+
+                        <label class="text-xs text-slate-600">
+                            Tags
+                        </label>
+
+                        <input
+                            wire:model="tags"
+                            class="w-full mt-1 border border-slate-300 rounded-md px-3 py-2 text-sm"
+                            placeholder="e.g. interior design, architecture, office">
+
+                        <p class="text-xs text-slate-400 mt-1">
+                            Use comma-separated tags
+                        </p>
+
+                        @error('tags')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
 
                     </div>
 
