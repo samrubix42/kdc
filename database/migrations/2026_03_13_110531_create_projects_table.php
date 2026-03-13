@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('clients')->nullable();
             $table->date('completion_date')->nullable();
-            $table->date('architects')->nullable();
+            $table->string('architects')->nullable();
             $table->timestamps();
         });
     }

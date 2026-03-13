@@ -1,10 +1,22 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Project;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
-new class extends Component
-{
-  //
+new class extends Component {
+  public function with()
+  {
+    $projects = Project::with(['category', 'images' => function ($query) {
+      $query->orderByDesc('is_primary')->orderBy('id');
+    }])->latest()->get();
+
+    return [
+      'projects' => $projects,
+      'categories' => $projects->pluck('category')->filter()->unique('id')->values(),
+    ];
+  }
 };
 ?>
 
@@ -21,110 +33,38 @@ new class extends Component
         <div class="filter-content-2">
           <ul class="filter js-filter">
             <li class="active"><a href="#" data-filter="*">All</a></li>
-            <li><a href="#" data-filter=".building">Building</a></li>
-            <li><a href="#" data-filter=".villa">Villa</a></li>
-            <li><a href="#" data-filter=".interior">Interior</a></li>
-            <li><a href="#" data-filter=".exterior">Exterior</a></li>
+            @foreach($categories as $category)
+              <li><a href="#" data-filter=".{{ Str::slug($category->slug) }}">{{ $category->name }}</a></li>
+            @endforeach
           </ul>
         </div>
       </div>
       <div class="grid-items js-isotope js-grid-items">
-        <div class="grid-item building js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/1-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Triangle<br>Concrete House<br>On Lake</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
+        @forelse($projects as $project)
+          @php
+            $cover = $project->images->firstWhere('is_primary', true) ?? $project->images->first();
+            $categoryClass = Str::slug($project->category?->slug ?? 'project');
+          @endphp
+          <div class="grid-item {{ $categoryClass }} js-isotope-item js-grid-item">
+            <div class="project-item item-shadow">
+              <img alt="{{ $project->title }}" class="img-responsive" src="{{ $cover ? Storage::url($cover->image_path) : asset('images/projects/1-426x574.jpg') }}">
+              <div class="project-hover">
+                <div class="project-hover-content">
+                  <h3 class="project-title">{{ $project->title }}</h3>
+                  <p class="project-description">{{ Str::limit(strip_tags($project->description), 170) }}</p>
+                </div>
               </div>
+              <a href="{{ route('project.detail', $project->slug) }}" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
             </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
           </div>
-        </div>
-        <div class="grid-item building js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/2-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Ocean<br>Museum<br>Italy</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
+        @empty
+          <div class="grid-item js-isotope-item js-grid-item">
+            <div class="project-item item-shadow" style="padding:30px;">
+              <h3 class="project-title">No projects available</h3>
+              <p class="project-description">Please add projects from Admin Panel.</p>
             </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
           </div>
-        </div>
-        <div class="grid-item villa js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/3-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Milko<br>Co-Working<br>Building</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
-            </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="grid-item villa js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/4-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Redesign<br>Interior For<br>Villa</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
-            </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="grid-item interior js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/5-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Wooden<br>Hozirontal<br>Villa</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
-            </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="grid-item interior js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/6-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Small<br>House Near<br>Wroclaw</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
-            </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="grid-item exterior js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/7-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Bellecomde<br>Holiday<br>Residence</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
-            </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="grid-item exterior js-isotope-item js-grid-item">
-          <div class="project-item item-shadow">
-            <img alt="" class="img-responsive" src="images/projects/8-426x574.jpg">
-            <div class="project-hover">
-              <div class="project-hover-content">
-                <h3 class="project-title">Cubic<br>Inter Mesuem<br>In Rome</h3>
-                <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-              </div>
-            </div>
-            <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-          </div>
-        </div>
+        @endforelse
       </div>
     </div>
   </div>

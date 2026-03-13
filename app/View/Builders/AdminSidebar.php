@@ -67,20 +67,19 @@ class AdminSidebar
                         'hasSubmenu' => false,
                         'submenu' => [],
                     ],
-                 
+                    (object)[
+                        'title' => 'Project List',
+                        'icon' => 'ri-list-check-2',
+                        'url' => Route::has('admin.portfolio.list') ? route('admin.portfolio.list') : '#',
+                        'hasSubmenu' => false,
+                        'submenu' => [],
+                    ],
                 ],
             ],
             (object)[
                 'title' => 'Contacts',
                 'icon' => 'ri-mail-line',
                 'url' => Route::has('admin.contact-list') ? route('admin.contact-list') : '#',
-                'hasSubmenu' => false,
-                'submenu' => [],
-            ],
-            (object)[
-                'title' => 'Portfolio',
-                'icon' => 'ri-briefcase-line',
-                'url' => Route::has('admin.portfolio.list') ? route('admin.portfolio.list') : '#',
                 'hasSubmenu' => false,
                 'submenu' => [],
             ],

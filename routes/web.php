@@ -22,7 +22,10 @@ Route::prefix('admin')->group(function () {
         Route::livewire('/blog-categories', 'admin::blog.blogcategory-list')->name('admin.blog-category');
         Route::livewire('/blogs', 'admin::blog.blog-list')->name('admin.blogs');
         Route::livewire('/project-categories', 'admin.project.project-category-list')->name('admin.project-category');
-        Route::livewire('/portfolio', 'admin.project.project-category-list')->name('admin.portfolio.list');
+        Route::livewire('/portfolio', 'admin.project.project-list')->name('admin.portfolio.list');
+        Route::livewire('/projects', 'admin.project.project-list')->name('admin.projects');
+        Route::livewire('/project/add', 'admin::project.add-project')->name('admin.project.add');
+        Route::livewire('/project/update/{id}', 'admin::project.update-project')->name('admin.project.update');
         Route::livewire('/contacts', 'admin::contact.contact-list')->name('admin.contact-list');
         Route::livewire('/blog/add', 'admin::blog.add-blog')->name('admin.blog.add');
         Route::livewire('/blog/update/{id}', 'admin::blog.update-blog')->name('admin.blog.update');
