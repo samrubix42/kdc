@@ -10,6 +10,7 @@ Route::livewire('/contact', 'pages::contact.contact')->name('contact');
 Route::livewire('/service', 'pages::service.service')->name('service');
 Route::livewire('/client', 'pages::client.client')->name('client');
 Route::livewire('/project', 'pages::project.project')->name('project');
+Route::livewire('/project/{slug}', 'pages::project.project-view')->name('project.detail');
 Route::livewire('/profile', 'pages::profile.profile')->name('profile');
 
 
@@ -20,6 +21,8 @@ Route::prefix('admin')->group(function () {
         Route::livewire('/', 'admin::testimonial.testimonial-list')->name('admin.testimonial');
         Route::livewire('/blog-categories', 'admin::blog.blogcategory-list')->name('admin.blog-category');
         Route::livewire('/blogs', 'admin::blog.blog-list')->name('admin.blogs');
+        Route::livewire('/project-categories', 'admin.project.project-category-list')->name('admin.project-category');
+        Route::livewire('/portfolio', 'admin.project.project-category-list')->name('admin.portfolio.list');
         Route::livewire('/contacts', 'admin::contact.contact-list')->name('admin.contact-list');
         Route::livewire('/blog/add', 'admin::blog.add-blog')->name('admin.blog.add');
         Route::livewire('/blog/update/{id}', 'admin::blog.update-blog')->name('admin.blog.update');

@@ -55,6 +55,22 @@ class AdminSidebar
                 ],
             ],
             (object)[
+                'title' => 'Projects',
+                'icon' => 'ri-folder-line',
+                'url' => 'javascript:void(0)',
+                'hasSubmenu' => true,
+                'submenu' => [
+                    (object)[
+                        'title' => 'Project Categories',
+                        'icon' => 'ri-list-settings-line',
+                        'url' => Route::has('admin.project-category') ? route('admin.project-category') : '#',
+                        'hasSubmenu' => false,
+                        'submenu' => [],
+                    ],
+                 
+                ],
+            ],
+            (object)[
                 'title' => 'Contacts',
                 'icon' => 'ri-mail-line',
                 'url' => Route::has('admin.contact-list') ? route('admin.contact-list') : '#',
