@@ -7,6 +7,9 @@ new class extends Component
     //
 };
 ?>
+@section('meta_title', 'Services | KDC Consultants - Architecture & Project Management')
+@section('meta_description', 'Explore KDC Consultants services including architecture, engineering coordination, design management, and end-to-end project supervision.')
+@section('meta_keywords', 'architecture services, project management services, design coordination, engineering planning, KDC Consultants')
 
 <div>
     @php

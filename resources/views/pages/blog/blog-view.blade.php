@@ -35,6 +35,9 @@ new class extends Component {
     }
 };
 ?>
+@section('meta_title', $blog->meta_title ?: ($blog->title . ' | KDC Blog'))
+@section('meta_description', $blog->meta_description ?: \Illuminate\Support\Str::limit(strip_tags((string) ($blog->description ?: $blog->content)), 160))
+@section('meta_keywords', $blog->meta_keywords ?: $blog->tags ?: 'architecture blog, interior blog, KDC Consultants')
 
 <div>
   <div class="header-space">

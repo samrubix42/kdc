@@ -17,6 +17,9 @@ new class extends Component {
     }
 };
 ?>
+@section('meta_title', $project->title . ' | Project | KDC Consultants')
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags((string) $project->description), 160))
+@section('meta_keywords', implode(', ', array_filter([$project->title, $project->category?->name, 'KDC project', 'architecture project', 'interior design project'])))
 
 <div>
     @php

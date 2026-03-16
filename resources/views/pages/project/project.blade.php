@@ -19,6 +19,9 @@ new class extends Component {
   }
 };
 ?>
+@section('meta_title', 'Projects | KDC Consultants Portfolio')
+@section('meta_description', 'Browse KDC Consultants project portfolio across residential, commercial, hospitality, and interior architecture categories.')
+@section('meta_keywords', 'KDC projects, architecture portfolio, interior projects, commercial architecture, residential projects')
 
 <div>
   @php

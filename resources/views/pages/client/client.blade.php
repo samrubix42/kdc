@@ -16,6 +16,9 @@ new class extends Component
     }
 };
 ?>
+@section('meta_title', 'Clients & Partnerships | KDC Consultants')
+@section('meta_description', 'Read client experiences and explore KDC Consultants partnerships built on accountability, delivery discipline, and long-term trust.')
+@section('meta_keywords', 'KDC clients, client testimonials, architecture partnerships, consulting client experience, KDC Consultants')
 
 <div>
     @php

@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
+<meta name="description" content="@yield('meta_description', 'KDC Consultants offers architecture, interior design, project planning, and execution services across residential, commercial, and institutional projects.')">
+<meta name="keywords" content="@yield('meta_keywords', 'KDC Consultants, architecture, interior design, project management, construction planning')">
 <meta name="author" content="">
 
 <!-- Favicons -->
@@ -12,7 +13,7 @@
 <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('favicon.ico') }}">
 <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('favicon.ico') }}">
 
-<title>Architecture & Interior HTML Template</title> 
+<title>@yield('meta_title', 'KDC Consultants | Architecture, Interiors & Project Management')</title> 
 
 <!-- Styles -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Poppins:300,400,500,600,700" rel="stylesheet">

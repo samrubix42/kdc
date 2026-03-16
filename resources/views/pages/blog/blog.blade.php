@@ -21,6 +21,9 @@ new class extends Component {
     }
 };
 ?>
+@section('meta_title', 'Blog | KDC Consultants Insights')
+@section('meta_description', 'Read KDC Consultants blog for architecture, interiors, planning, and project execution insights from real-world practice.')
+@section('meta_keywords', 'architecture blog, interior design blog, project planning insights, KDC blog, construction consulting articles')
 
 <div>
     <main class="page-header">

@@ -40,6 +40,9 @@ new class extends Component
   }
 };
 ?>
+@section('meta_title', 'Contact | KDC Consultants')
+@section('meta_description', 'Contact KDC Consultants for architecture, interiors, planning, and project management services in Delhi NCR and beyond.')
+@section('meta_keywords', 'contact KDC Consultants, architecture consultation, interior design consultation, project planning Delhi NCR')
 
 <div>
   <main class="page-header-3">

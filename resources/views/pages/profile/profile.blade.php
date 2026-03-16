@@ -7,6 +7,9 @@ new class extends Component
     //
 };
 ?>
+@section('meta_title', 'Company Profile | KDC Consultants')
+@section('meta_description', 'Learn about KDC Consultants, our leadership, design philosophy, quality systems, and decades of delivery experience across sectors.')
+@section('meta_keywords', 'KDC profile, architecture company profile, Vijay Kachroo, ISO certified design firm, KDC Consultants')
 
 <div>
     @php

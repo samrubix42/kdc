@@ -7,6 +7,9 @@ new class extends Component
     //
 };
 ?>
+@section('meta_title', 'KDC Consultants | Architecture, Interiors & Project Delivery')
+@section('meta_description', 'KDC Consultants delivers architecture, interiors, and project management services with over two decades of expertise across residential, commercial, and industrial sectors.')
+@section('meta_keywords', 'KDC Consultants, architecture firm, interior design, project management, industrial architecture, residential design')
 
 <div>
     <main id="home" class="jumbotron">
