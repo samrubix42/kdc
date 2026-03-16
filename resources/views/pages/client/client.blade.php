@@ -1,38 +1,24 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Testimonial;
 
 new class extends Component
 {
-    //
+    public function with(): array
+    {
+        return [
+            'clientTestimonials' => Testimonial::query()
+                ->where('is_active', true)
+                ->take(4)
+                ->get(['name', 'client_info', 'message']),
+        ];
+    }
 };
 ?>
 
 <div>
     @php
-        $clientTestimonials = [
-            [
-                'name' => 'Rohit Mehta',
-                'company' => 'Director, Mehta Infrastructure Pvt. Ltd.',
-                'text' => 'KDC delivered exactly what we envisioned for our corporate office in Gurgaon. Planning, execution and detail control were handled with consistency from concept to handover.',
-            ],
-            [
-                'name' => 'Neha Kapoor',
-                'company' => 'Founder, Kapoor Lifestyle Homes',
-                'text' => 'Our luxury residence in South Delhi was designed with elegance and practicality. The team stayed professional, responsive and transparent throughout the project.',
-            ],
-            [
-                'name' => 'Sanjay Verma',
-                'company' => 'Operations Head, Verma Auto Components',
-                'text' => 'The industrial facility designed by KDC improved workflow efficiency and safety standards significantly. Their technical understanding and site coordination were strong.',
-            ],
-            [
-                'name' => 'Priya Nair',
-                'company' => 'Trustee, Nair Education Foundation',
-                'text' => 'KDC handled our institutional campus project with commitment and creativity. Timelines were respected and the final outcome met both function and identity goals.',
-            ],
-        ];
-
         $clientBenefits = [
             'Single-point coordination across architecture, engineering and execution interfaces',
             'Faster resolution of site issues and design clarifications',
@@ -413,14 +399,21 @@ new class extends Component
                         </div>
                         <div class="col-md-9">
                             <div class="client-testimonial-grid">
-                                @foreach ($clientTestimonials as $testimonial)
+                                @forelse ($clientTestimonials as $testimonial)
                                     <div class="client-quote-card">
                                         <img alt="" class="client-quote-icon" src="{{ asset('images/image-icons/icon-quote.png') }}">
-                                        <span class="client-name">{{ $testimonial['name'] }}</span>
-                                        <span class="client-company">{{ $testimonial['company'] }}</span>
-                                        <p>{{ $testimonial['text'] }}</p>
+                                        <span class="client-name">{{ $testimonial->name }}</span>
+                                        <span class="client-company">{{ $testimonial->client_info ?: 'Client' }}</span>
+                                        <p>{{ $testimonial->message }}</p>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="client-quote-card">
+                                        <img alt="" class="client-quote-icon" src="{{ asset('images/image-icons/icon-quote.png') }}">
+                                        <span class="client-name">No testimonials yet</span>
+                                        <span class="client-company">Please add testimonials from Admin Panel</span>
+                                        <p>Once added and marked active, testimonials will appear automatically here.</p>
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>

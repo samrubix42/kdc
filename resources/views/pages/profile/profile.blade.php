@@ -229,46 +229,6 @@ new class extends Component
             </div>
         </section>
 
-        <section class="section profile-highlight">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <strong class="section-subtitle">OUR APPROACH</strong>
-                        <h2 class="section-title section-about-title" style="color: #fff;">Integrated management with innovative and greener building thinking</h2>
-                        <p>We adopt an integrated approach towards project management to ensure apposite coordination at project sites. Our objective is to create spaces that enrich the rituals of daily life while remaining practical, deliverable and technically sound.</p>
-                        <p>We provide remarkable quality building measures by adopting innovative ideas and keeping ourselves conversant with emerging world-class construction methodology trends. We also believe in updated usage of construction materials while keeping pace with the green building concept to reduce carbon footprint.</p>
-                        <div class="profile-stat">
-                            <span class="profile-stat-number">20+</span>
-                            <p>Years of cross-sector experience in institutional, industrial and residential assignments.</p>
-                        </div>
-                        <div class="profile-stat">
-                            <span class="profile-stat-number">ISO</span>
-                            <p>Quality-driven systems that reinforce service consistency and customer satisfaction.</p>
-                        </div>
-                        <div class="profile-stat">
-                            <span class="profile-stat-number">Green</span>
-                            <p>Material awareness and green building thinking aimed at reducing carbon footprint.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-7 col-md-offset-1">
-                        <div class="row">
-                            @foreach ($profilePrinciples as $principle)
-                                <div class="col-md-4">
-                                    <div class="profile-principle">
-                                        <h3>{{ $principle['title'] }}</h3>
-                                        <p>{{ $principle['text'] }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="row" style="margin-top: 34px;">
-                            <div class="col-md-12">
-                                <img alt="KDC integrated design and project management" class="img-responsive item-shadow" src="{{ asset('building/banner4.jpg') }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    
     </div>
 </div>
