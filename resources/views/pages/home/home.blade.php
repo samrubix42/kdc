@@ -1,15 +1,45 @@
 <?php
 
 use Livewire\Component;
+use App\Models\Blog;
+use Illuminate\Support\Str;
 
 new class extends Component
 {
-    //
+    public function with(): array
+    {
+        return [
+            'blogs' => Blog::where('is_active', true)
+                ->latest()
+                ->take(3)
+                ->get(),
+        ];
+    }
 };
 ?>
 @section('meta_title', 'KDC Consultants | Architecture, Interiors & Project Delivery')
 @section('meta_description', 'KDC Consultants delivers architecture, interiors, and project management services with over two decades of expertise across residential, commercial, and industrial sectors.')
 @section('meta_keywords', 'KDC Consultants, architecture firm, interior design, project management, industrial architecture, residential design')
+
+<style>
+    #home .rev_slider .slotholder {
+        position: relative;
+    }
+
+    #home .rev_slider .slotholder::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.10);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    #home .rev_slider .tp-bgimg,
+    #home .rev_slider .rev-slidebg {
+        box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.22) !important;
+    }
+</style>
 
 <div>
     <main id="home" class="jumbotron">
@@ -48,7 +78,7 @@ new class extends Component
 
                         <!-- Layer 5 -->
 
-                        <div class="slider-title tp-caption tp-resizeme" data-x="['left']" data-hoffset="['156']" data-y="['middle','middle','middle','middle']" data-voffset="['-30']" data-textalign="['left']" data-fontsize="['72', '63','57','50']" data-lineheight="['72','68', '62','54']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-155%];z:0;rX:0deg;rY:0deg;rZ:0deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:50px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="chars" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="font-weight:600; color:#8dc63f; letter-spacing:-0.05em;">Building<br>
+                        <div class="slider-title tp-caption tp-resizeme" data-x="['left']" data-hoffset="['156']" data-y="['middle','middle','middle','middle']" data-voffset="['-30']" data-textalign="['left']" data-fontsize="['72', '63','57','50']" data-lineheight="['72','68', '62','54']" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-155%];z:0;rX:0deg;rY:0deg;rZ:0deg;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:50px;y:0px;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="chars" data-splitout="none" data-responsive_offset="on" data-elementdelay="0.05" style="font-weight:600; color:white; letter-spacing:-0.05em;">Building<br>
                             Strong Industrial<br>
                             Foundations
                         </div>
@@ -382,50 +412,39 @@ new class extends Component
 
         <section class="section-news section">
             <div class="container">
-                <h2 class="section-title">Latest Blog <a href="" class="link-arrow-2 pull-right">All Articles <i class="icon ion-ios-arrow-right"></i></a></h2>
+                <h2 class="section-title">Latest Blog <a href="{{ route('blog') }}" class="link-arrow-2 pull-right">All Articles <i class="icon ion-ios-arrow-right"></i></a></h2>
                 <div class="news-carousel owl-carousel">
-                    <div class="news-item">
-                        <img alt="" src="{{ asset('images/news/1-370x370.jpg') }}">
-                        <div class="news-hover">
-                            <div class="hover-border">
-                                <div></div>
+                    @forelse($blogs as $blog)
+                        <div class="news-item">
+                            <img alt="{{ $blog->title }}" src="{{ $blog->image ? Storage::url($blog->image) : asset('images/news/1-370x370.jpg') }}">
+                            <div class="news-hover">
+                                <div class="hover-border">
+                                    <div></div>
+                                </div>
+                                <div class="content">
+                                    <div class="time">{{ $blog->created_at?->format('M jS, Y') }}</div>
+                                    <h3 class="news-title">{{ $blog->title }}</h3>
+                                    <p class="news-description">{{ $blog->description ?: Str::limit(strip_tags($blog->content), 110) }}</p>
+                                </div>
+                                <a class="read-more" href="{{ route('blog.detail', $blog->slug) }}">Continue</a>
                             </div>
-                            <div class="content">
-                                <div class="time">Dec 15th, 2016</div>
-                                <h3 class="news-title">Discover Architecture Of Bario</h3>
-                                <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                            </div>
-                            <a class="read-more" href="#">Continue</a>
                         </div>
-                    </div>
-                    <div class="news-item">
-                        <img alt="" src="{{ asset('images/news/2-370x370.jpg') }}">
-                        <div class="news-hover">
-                            <div class="hover-border">
-                                <div></div>
+                    @empty
+                        <div class="news-item">
+                            <img alt="No blog posts" src="{{ asset('images/news/1-370x370.jpg') }}">
+                            <div class="news-hover">
+                                <div class="hover-border">
+                                    <div></div>
+                                </div>
+                                <div class="content">
+                                    <div class="time">Latest</div>
+                                    <h3 class="news-title">No blog posts found</h3>
+                                    <p class="news-description">Please check back soon for new articles.</p>
+                                </div>
+                                <a class="read-more" href="{{ route('blog') }}">View Blog</a>
                             </div>
-                            <div class="content">
-                                <div class="time">Dec 15th, 2016</div>
-                                <h3 class="news-title">Discover Architecture Of Bario</h3>
-                                <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                            </div>
-                            <a class="read-more" href="#">Continue</a>
                         </div>
-                    </div>
-                    <div class="news-item">
-                        <img alt="" src="{{ asset('images/news/3-370x370.jpg') }}">
-                        <div class="news-hover">
-                            <div class="hover-border">
-                                <div></div>
-                            </div>
-                            <div class="content">
-                                <div class="time">Dec 15th, 2016</div>
-                                <h3 class="news-title">Discover Architecture Of Bario</h3>
-                                <p class="news-description">Lorem ipsum dolor sit amet, consect etur adipiscing elit. Mauris vel auctorol est. Integer nunc ipsum...</p>
-                            </div>
-                            <a class="read-more" href="#">Continue</a>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
             </div>
         </section>

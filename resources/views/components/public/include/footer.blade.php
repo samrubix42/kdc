@@ -30,7 +30,10 @@ new class extends Component
       <div class="footer-flex">
         <div class="flex-item">
           <a class="brand pull-left" href="{{ route('home') }}">
-            <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}">
+            <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}"      style="
+            width: clamp(120px, 40vw, 220px);
+            height: auto;
+        ">
             
           </a>
         </div>

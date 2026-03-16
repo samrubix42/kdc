@@ -49,9 +49,16 @@ new class extends Component
             <span class="icon-bar"></span>
         </button>
 
-        <a href="{{ route('home') }}">
-            <img alt="" src="{{ asset('images/KDC-Logo-crop.png') }}" style="height: auto; width: 170px;">
-        </a>
+     <a href="{{ route('home') }}">
+    <img 
+        src="{{ asset('images/KDC-Logo-crop.png') }}" 
+        alt="Logo"
+        style="
+            width: clamp(120px, 40vw, 220px);
+            height: auto;
+            margin-top: -8px;
+        ">
+</a>
 
 
         <div class="social-list hidden-xs">
