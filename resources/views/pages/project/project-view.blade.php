@@ -3,6 +3,7 @@
 use Livewire\Component;
 use App\Models\Project;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 new class extends Component {
     public $project;
@@ -18,6 +19,24 @@ new class extends Component {
 ?>
 
 <div>
+    @php
+      $resolveImageUrl = static function (?string $path, string $fallback) {
+        if (blank($path)) {
+          return asset($fallback);
+        }
+
+        if (Str::startsWith($path, ['http://', 'https://', '//'])) {
+          return $path;
+        }
+
+        if (Str::startsWith($path, ['images/', '/images/'])) {
+          return asset(ltrim($path, '/'));
+        }
+
+        return Storage::url($path);
+      };
+    @endphp
+
     <div class="content">   
       <div class="project-detail">
         <div class="slider-prev icon-chevron-left hidden-xs"></div>
@@ -32,7 +51,7 @@ new class extends Component {
 
               @if($slides->isEmpty())
                 <li data-transition="slideleft" data-masterspeed="1200" data-fsmasterspeed="1200">
-                  <img src="{{ asset('images/projects/1-1920x1080.jpg') }}" alt="{{ $project->title }}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+                  <img src="{{ $resolveImageUrl(null, 'images/projects/1-1920x1080.jpg') }}" alt="{{ $project->title }}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
                   <div class="tp-caption tp-shape tp-shapewrapper" data-x="['left']" data-hoffset="['0']" data-y="['top']" data-voffset="['50','50','40','40']" data-width="528" data-minwidth="528" data-whitespace="normal" data-type="shape" data-responsive_offset="on" data-frames='[{"from":"opacity:0;z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":0,"ease":"Power3.easeInOut"},{"delay":"wait","speed":400,"to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textalign="['left','left','left','left']">
                     <div class="project-detail-info">
                       <div class="project-detail-control"><span class="hide-info">hide information</span><span class="show-info">show information</span></div>
@@ -52,7 +71,7 @@ new class extends Component {
               @else
                 @foreach($slides as $image)
                   <li data-transition="slideleft" data-masterspeed="1200" data-fsmasterspeed="1200">
-                    <img src="{{ Storage::url($image->image_path) }}" alt="{{ $project->title }}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+                    <img src="{{ $resolveImageUrl($image->image_path, 'images/projects/1-1920x1080.jpg') }}" alt="{{ $project->title }}" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
                     <div class="tp-caption tp-shape tp-shapewrapper" data-x="['left']" data-hoffset="['0']" data-y="['top']" data-voffset="['50','50','40','40']" data-width="528" data-minwidth="528" data-whitespace="normal" data-type="shape" data-responsive_offset="on" data-frames='[{"from":"opacity:0;z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":0,"ease":"Power3.easeInOut"},{"delay":"wait","speed":400,"to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textalign="['left','left','left','left']">
                       <div class="project-detail-info">
                         <div class="project-detail-control"><span class="hide-info">hide information</span><span class="show-info">show information</span></div>

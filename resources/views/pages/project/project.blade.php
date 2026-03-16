@@ -21,6 +21,24 @@ new class extends Component {
 ?>
 
 <div>
+  @php
+    $resolveImageUrl = static function (?string $path, string $fallback) {
+      if (blank($path)) {
+        return asset($fallback);
+      }
+
+      if (Str::startsWith($path, ['http://', 'https://', '//'])) {
+        return $path;
+      }
+
+      if (Str::startsWith($path, ['images/', '/images/'])) {
+        return asset(ltrim($path, '/'));
+      }
+
+      return Storage::url($path);
+    };
+  @endphp
+
   <main class="page-header">
     <div class="container">
       <h1>Architecture Is A Visual Art And The Building Speak For Themeselves</h1>
@@ -34,7 +52,7 @@ new class extends Component {
           <ul class="filter js-filter">
             <li class="active"><a href="#" data-filter="*">All</a></li>
             @foreach($categories as $category)
-              <li><a href="#" data-filter=".{{ Str::slug($category->slug) }}">{{ $category->name }}</a></li>
+              <li><a href="#" data-filter=".{{ Str::slug($category->slug ?: $category->name) }}">{{ $category->name }}</a></li>
             @endforeach
           </ul>
         </div>
@@ -43,11 +61,11 @@ new class extends Component {
         @forelse($projects as $project)
           @php
             $cover = $project->images->firstWhere('is_primary', true) ?? $project->images->first();
-            $categoryClass = Str::slug($project->category?->slug ?? 'project');
+            $categoryClass = Str::slug($project->category?->slug ?: $project->category?->name ?: 'project');
           @endphp
           <div class="grid-item {{ $categoryClass }} js-isotope-item js-grid-item">
             <div class="project-item item-shadow">
-              <img alt="{{ $project->title }}" class="img-responsive" src="{{ $cover ? Storage::url($cover->image_path) : asset('images/projects/1-426x574.jpg') }}">
+              <img alt="{{ $project->title }}" class="img-responsive" src="{{ $resolveImageUrl($cover?->image_path, 'images/projects/1-426x574.jpg') }}">
               <div class="project-hover">
                 <div class="project-hover-content">
                   <h3 class="project-title">{{ $project->title }}</h3>
