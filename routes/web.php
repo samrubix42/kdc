@@ -13,7 +13,7 @@ Route::livewire('/project', 'pages::project.project')->name('project');
 Route::livewire('/project/{slug}', 'pages::project.project-view')->name('project.detail');
 Route::livewire('/profile', 'pages::profile.profile')->name('profile');
 
-
+Route::livewire('/home2', 'pages::home.home2')->name('home2');
 
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
