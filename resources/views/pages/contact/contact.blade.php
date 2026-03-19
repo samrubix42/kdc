@@ -72,21 +72,21 @@ new class extends Component
                 <div class="info-title">Keep in touch</div>
               </div>
             </div>
-            <div class="col-md-9">
-              <div class="row-contact row">
+            <div class="col-md-9" style="color: black;">
+              <div class="row-contact row" style="color: black;">
                 <div class="col-contact col-lg-6">
-                  <h3 class="contact-title contact-top">New Delhi, <span>India</span></h3>
-                  <p class="contact-address text-muted"><strong>KACHROO DESIGN CONSULTANTS (P) LTD.</strong><br>Regd. Office<br>341, 3rd Floor, Vardhman Sunrise Plaza,<br>Plot No.1, LSC, Vasundhara Enclave,<br>New Delhi-110 096, India</p>
-                  <p class="contact-row"><strong class="text-dark">Email:</strong> kdc.search@gmail.com</p>
-                  <p class="contact-row"><strong class="text-dark">Email:</strong> search@kdcteam.com</p>
+                  <h3 class="contact-title contact-top" style="color: black;">New Delhi, <span style="color: black;">India</span></h3>
+                  <p class="contact-address" style="color: black;"><strong>KACHROO DESIGN CONSULTANTS (P) LTD.</strong><br>Regd. Office<br>341, 3rd Floor, Vardhman Sunrise Plaza,<br>Plot No.1, LSC, Vasundhara Enclave,<br>New Delhi-110 096, India</p>
+                  <p class="contact-row" style="color: black;"><strong style="color: black;">Email:</strong> kdc.search@gmail.com</p>
+                  <p class="contact-row" style="color: black;"><strong style="color: black;">Email:</strong> search@kdcteam.com</p>
                 </div>
                 <div class="col-contact col-lg-6">
-                  <p class="contact-top"><strong class="text-muted">Studio</strong></p>
-                  <p class="contact-address text-muted"><strong>B-71, Sector-64,<br>Noida-201301, U.P.</strong></p>
-                  <p class="contact-row"><strong class="text-dark">Call directly:</strong></p>
-                  <p class="phone-lg text-dark">+91 120 4121525</p>
-                  <p class="phone-lg text-dark">+91 7503123111</p>
-                  <p class="phone-lg text-dark">+91 9811506001</p>
+                  <p class="contact-top" style="color: black;"><strong style="color: black;">Studio</strong></p>
+                  <p class="contact-address" style="color: black;"><strong style="color: black;">B-71, Sector-64,<br>Noida-201301, U.P.</strong></p>
+                  <p class="contact-row" style="color: black;"><strong style="color: black;">Call directly:</strong></p>
+                  <p class="phone-lg" style="color: black;">+91 120 4121525</p>
+                  <p class="phone-lg" style="color: black;">+91 7503123111</p>
+                  <p class="phone-lg" style="color: black;">+91 9811506001</p>
                 </div>
               </div>
             </div>
