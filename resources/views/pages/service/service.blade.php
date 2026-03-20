@@ -32,7 +32,7 @@ new class extends Component
                 
                 <!-- Right Hero Image placeholder (architectural sketch) -->
                 <div class="col-md-6 col-sm-12 text-right hidden-xs">
-                     <img src="{{ asset('building/modern_corporate_sketch.png') }}" alt="Architectural Sketch" style="max-width: 100%; max-height: 250px; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid #fff;">
+                     <img src="{{ asset('building/Gemini_Generated_Image_jt6fgqjt6fgqjt6f.jpg') }}" alt="Architectural Building" style="max-width: 100%; max-height: 250px; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid #fff; object-fit: cover;">
                 </div>
             </div>
         </div>

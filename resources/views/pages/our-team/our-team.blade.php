@@ -32,7 +32,7 @@ new class extends Component
                 
                 <!-- Right Hero Image placeholder -->
                 <div class="col-md-6 col-sm-12 text-right hidden-xs">
-                     <img src="{{ asset('images/KDC-Logo-crop.png') }}" alt="KDC Consultants" style="max-width: 100%; max-height: 150px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                     <img src="{{ asset('building/banner3.jpg') }}" alt="Our Team Workspace" style="max-width: 100%; max-height: 250px; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid #fff; object-fit: cover;">
                 </div>
             </div>
         </div>
