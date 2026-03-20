@@ -2,6 +2,8 @@
 
 use Livewire\Component;
 use App\Models\Blog;
+use App\Models\Project;
+use App\Models\ProjectCategory;
 use Illuminate\Support\Str;
 
 new class extends Component
@@ -13,6 +15,11 @@ new class extends Component
                 ->latest()
                 ->take(3)
                 ->get(),
+            'projects' => Project::with(['images', 'category'])
+                ->latest()
+                ->take(3)
+                ->get(),
+            'categories' => ProjectCategory::take(3)->get(),
         ];
     }
 };
@@ -201,6 +208,8 @@ new class extends Component
                         <strong class="section-subtitle">ARCHITECTURE & INTERIORS</strong>
                         <h2 class="section-title section-about-title">An Introduction</h2>
                         <p><img src="{{ asset('images/kdc-5.png') }} " style="height: 30px;" alt="KDC Logo"> is a revolutionary emergence in the field of architectural assignments formulated on the ethics of Professionalism and to create versatility with a young and dynamic team of professional acumen who have been dedicated over so many years in this industry.</p>
+                        <p style="margin-top: 15px; color: #555; line-height: 1.8;">As an ISO 9001:2015 URS certified organization, we hold ourselves to the highest standards of planning, precision, and execution. Whether navigating comprehensive master planning, innovative interior design, or robust structural engineering, our multi-disciplinary approach ensures every project not only meets but vastly exceeds our clients' functional and aesthetic aspirations.</p>
+
                         <div class="experience-box">
                             <div class="experience-border"></div>
                             <div class="experience-content">
@@ -214,6 +223,69 @@ new class extends Component
                             <img alt="" class="about-img img-responsive" src="{{ asset('building/19112.jpg') }}">
                             <div class="dots"></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Services Preview -->
+        <section id="services-preview" class="section" style="background-color: #1a4276; padding: 90px 0; position: relative;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0;">
+                <div style="position: absolute; bottom: -50px; right: -50px; width: 300px; height: 300px; background-color: #95BF19; border-radius: 50%; opacity: 0.1;"></div>
+                <div style="position: absolute; top: -50px; left: -50px; width: 200px; height: 200px; background-color: #cee002; border-radius: 50%; opacity: 0.05;"></div>
+            </div>
+            
+            <div class="container" style="position: relative; z-index: 1;">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center" style="margin-bottom: 60px;">
+                        <strong class="section-subtitle" style="color: #95BF19; letter-spacing: 2px;">WHAT WE DO</strong>
+                        <h2 class="section-title section-about-title" style="color: #fff; border-bottom: none; padding-bottom: 0; margin-bottom: 25px; font-weight: 300; font-size: 42px;">Comprehensive Project Delivery</h2>
+                        <div style="width: 60px; height: 3px; background: #95BF19; margin: 0 auto 25px;"></div>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8;">We manage every aspect of the project lifecycle across three distinct stages, ensuring technical purity, efficient coordination, and flawless execution from concept to completion.</p>
+                    </div>
+                </div>
+
+                <div class="row" style="display: flex; flex-wrap: wrap;">
+                    <!-- Service 1 -->
+                    <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 45px 35px; border-radius: 8px; height: 100%; transition: transform 0.3s ease, background 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(-5px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)';">
+                            <div style="width: 65px; height: 65px; background: #95BF19; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(149,191,25,0.3);">
+                                <i class="ion-ios-paper-outline" style="color: #1a4276; font-size: 34px;"></i>
+                            </div>
+                            <h3 style="color: #fff; font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 20px;">Stage I: Planning</h3>
+                            <p style="color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 30px; font-size: 14.5px;">Site investigation, soil resistivity, master planning, architectural planning, and precise 3D conceptualization to build a solid foundation.</p>
+                            <a href="{{ route('service') }}" style="color: #95BF19; font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">Discover More <i class="ion-ios-arrow-thin-right" style="margin-left:5px;"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 45px 35px; border-radius: 8px; height: 100%; transition: transform 0.3s ease, background 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(-5px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)';">
+                            <div style="width: 65px; height: 65px; background: #95BF19; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(149,191,25,0.3);">
+                                <i class="ion-ios-color-wand-outline" style="color: #1a4276; font-size: 34px;"></i>
+                            </div>
+                            <h3 style="color: #fff; font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 20px;">Stage II: Engineering</h3>
+                            <p style="color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 30px; font-size: 14.5px;">MEP systems, interior design layouts, HVAC networks, bill of quantities (BOQ), and highly detailed tender documentation.</p>
+                            <a href="{{ route('service') }}" style="color: #95BF19; font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">Discover More <i class="ion-ios-arrow-thin-right" style="margin-left:5px;"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
+                        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 45px 35px; border-radius: 8px; height: 100%; transition: transform 0.3s ease, background 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.08)'; this.style.transform='translateY(-5px)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0)';">
+                            <div style="width: 65px; height: 65px; background: #95BF19; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(149,191,25,0.3);">
+                                <i class="ion-ios-gear-outline" style="color: #1a4276; font-size: 34px;"></i>
+                            </div>
+                            <h3 style="color: #fff; font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 20px;">Stage III: Management</h3>
+                            <p style="color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 30px; font-size: 14.5px;">Robust project management, strict quality assurance, extensive site supervision, and flawless handover of the completed build.</p>
+                            <a href="{{ route('service') }}" style="color: #95BF19; font-weight: 600; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 1px;">Discover More <i class="ion-ios-arrow-thin-right" style="margin-left:5px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-sm-12 text-center">
+                         <a href="{{ route('service') }}" class="btn" style="background: #95BF19; border: 2px solid #95BF19; color: #1a4276; font-weight: 700; padding: 14px 40px; border-radius: 4px; font-size: 15px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; display: inline-block;">View Full Scope of Services</a>
                     </div>
                 </div>
             </div>
@@ -233,95 +305,65 @@ new class extends Component
                         <div class="filter-content">
                             <ul class="filter-carousel filter pull-lg-right js-filter-carousel">
                                 <li class="active"><a href="#" class="all" data-filter="*">All</a></li>
-                                <li><a href="#" data-filter=".building">Building </a></li>
-                                <li><a href="#" data-filter=".interior-exterior">Interior & Exterior </a></li>
+                                @foreach($categories as $category)
+                                    <li><a href="#" data-filter=".{{ Str::slug($category->name) }}">{{ $category->name }}</a></li>
+                                @endforeach
                             </ul>
-                            <a href="" class="view-projects">View All Projects</a>
+                            <a href="{{ route('project') }}" class="view-projects">View All Projects</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="project-carousel owl-carousel">
-                <div class="project-item item-shadow building">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/1-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Triangle<br>Concrete House<br>On Lake</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
+                @forelse($projects as $project)
+                    @php
+                       $categoryClass = $project->category ? Str::slug($project->category->name) : 'building';
+                       $firstImage = $project->images->first();
+                       $imageUrl = $firstImage ? Storage::url($firstImage->image_path) : asset('images/projects/1-426x574.jpg');
+                    @endphp
+                    <div class="project-item item-shadow {{ $categoryClass }}">
+                        <img alt="{{ $project->title }}" class="img-responsive" src="{{ $imageUrl }}" style="height: 574px; object-fit: cover; width: 100%;">
+                        <div class="project-hover">
+                            <div class="project-hover-content">
+                                <h3 class="project-title">{!! nl2br(e($project->title)) !!}</h3>
+                                <p class="project-description">{{ Str::limit(strip_tags($project->description), 110) }}</p>
+                            </div>
                         </div>
+                        <a href="{{ route('project.detail', $project->slug) }}" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
                     </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow building">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/2-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Ocean<br>Museum<br>Italy</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
+                @empty
+                    <!-- Placeholder projects if none exist -->
+                    <div class="project-item item-shadow building">
+                        <img alt="Placeholder" class="img-responsive" src="{{ asset('images/projects/1-426x574.jpg') }}">
+                        <div class="project-hover">
+                            <div class="project-hover-content">
+                                <h3 class="project-title">Corporate<br>Headquarters<br>Design</h3>
+                                <p class="project-description">Explore our visionary corporate center focusing on sustainable planning and state-of-the-art office spaces.</p>
+                            </div>
                         </div>
+                        <a href="#" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
                     </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow building">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/3-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Milko<br>Co-Working<br>Building</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
+                    <div class="project-item item-shadow interior-exterior">
+                        <img alt="Placeholder" class="img-responsive" src="{{ asset('images/projects/2-426x574.jpg') }}">
+                        <div class="project-hover">
+                            <div class="project-hover-content">
+                                <h3 class="project-title">Luxury<br>Residential<br>Villa</h3>
+                                <p class="project-description">A beautiful showcase of exquisite interior design and landscape architecture complementing premium living.</p>
+                            </div>
                         </div>
+                        <a href="#" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
                     </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow building">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/4-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Redesign<br>Interior For<br>Villa</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
+                    <div class="project-item item-shadow building">
+                        <img alt="Placeholder" class="img-responsive" src="{{ asset('images/projects/3-426x574.jpg') }}">
+                        <div class="project-hover">
+                            <div class="project-hover-content">
+                                <h3 class="project-title">Industrial<br>Logistics<br>Park</h3>
+                                <p class="project-description">High-capacity operations and modern aesthetic solutions integrated to optimize large scale distribution flows.</p>
+                            </div>
                         </div>
+                        <a href="#" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
                     </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow interior-exterior">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/5-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Wooden<br>Hozirontal<br>Villa</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-                        </div>
-                    </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow interior-exterior">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/6-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Small<br>House Near<br>Wroclaw</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-                        </div>
-                    </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow interior-exterior">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/7-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Bellecomde<br>Holiday<br>Residence</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-                        </div>
-                    </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
-                <div class="project-item item-shadow interior-exterior">
-                    <img alt="" class="img-responsive" src="{{ asset('images/projects/8-426x574.jpg') }}">
-                    <div class="project-hover">
-                        <div class="project-hover-content">
-                            <h3 class="project-title">Cubic<br>Inter Mesuem<br>In Rome</h3>
-                            <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipil pcing elit. Proin nunc leo, rhoncus sit amet tolil arcu vel, pharetra volutpat sem lorn Donec tincidunt velit nec laoreet semper...</p>
-                        </div>
-                    </div>
-                    <a href="" class="link-arrow">See project <i class="icon ion-ios-arrow-right"></i></a>
-                </div>
+                @endforelse
             </div>
         </section>
 
