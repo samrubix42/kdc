@@ -56,7 +56,7 @@ new class extends Component
 
                         <!-- Main image-->
 
-                        <img src="{{ asset('building/banner3.jpg') }}" data-bgparallax="5" alt="" data-bgposition="center 0" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+                        <img src="{{ asset('building/Gemini_Generated_Image_jt6fgqjt6fgqjt6f.jpg') }}" data-bgparallax="5" alt="" data-bgposition="center 0" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
 
                         <!-- Layer 1 -->
 
