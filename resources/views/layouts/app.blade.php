@@ -15,10 +15,19 @@
 
 <title>@yield('meta_title', 'KDC Consultants | Architecture, Interiors & Project Management')</title> 
 
+<!-- Alpine.js -->
+
 <!-- Styles -->
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Poppins:300,400,500,600,700" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
 
+<style>
+    [x-cloak] { display: none !important; }
+    body { padding-top: 90px; } /* Adjust this based on header height */
+    @media (max-width: 1024px) {
+        body { padding-top: 70px; }
+    }
+</style>
 
 @livewireStyles
 </head>
