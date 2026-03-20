@@ -196,8 +196,7 @@ new class extends Component
 
         .contact-item {
             display: flex;
-            gap: 15px;
-            align-items: flex-start;
+            align-items: center; /* Better vertical alignment */
             margin-bottom: 20px;
             color: #555;
             font-size: 0.95rem;
@@ -205,14 +204,19 @@ new class extends Component
 
         .contact-item i {
             color: #cee002;
-            font-size: 1.3rem;
-            margin-top: 3px;
+            font-size: 1.4rem;
+            min-width: 35px; /* Ensures all text aligns completely straight */
+            text-align: left;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
         }
 
-        .contact-item a {
+        .contact-item a, .contact-item span {
             color: #555;
             text-decoration: none;
             transition: color 0.3s;
+            line-height: 1.5;
         }
 
         .contact-item a:hover {
