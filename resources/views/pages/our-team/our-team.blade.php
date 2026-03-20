@@ -11,17 +11,32 @@ new class extends Component
 @section('meta_description', 'Meet the expert team of architects, engineers, and project managers at KDC Consultants.')
 
 <div>
-    <!-- Page Header -->
-    <main class="page-header bg-dots" style="padding-top: 150px; padding-bottom: 50px; background-color: #f9f9f9; text-align: center;">
-        <div class="container">
-            <h1 class="page-title" style="color:#95BF19;">Our Team</h1>
-            <div class="breadcrumb" style="background:transparent; padding:0; margin:0;">
-                <a href="{{ route('home') }}" class="text-dark">Home</a>
-                <span style="margin: 0 10px; color:#999;">/</span>
-                <span class="text-primary">Our Team</span>
+    <!-- Hero Banner matched to Theme -->
+    <div style="position: relative; background-color: #1a4276; overflow: hidden; padding: 110px 0 60px;">
+        <!-- Diagonal Green Accent -->
+        <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 300px; background-color: #95BF19; transform: skewY(-4deg); transform-origin: bottom left; z-index: 0; opacity: 0.9;"></div>
+        <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 280px; background-color: #f9f9f9; transform: skewY(-4deg); transform-origin: bottom left; z-index: 1;"></div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="row" style="display:flex; flex-wrap:wrap; align-items:center;">
+                <!-- Left Title Content -->
+                <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                    <div style="width: 50px; height: 6px; background: #fff; margin-bottom: 20px;"></div>
+                    <h1 style="color: #95BF19; font-size: 54px; font-weight: 300; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 1px;">Our Team</h1>
+                    <div class="breadcrumb" style="background:transparent; padding:0; margin: 20px 0 0;">
+                        <a href="{{ route('home') }}" style="color: rgba(255,255,255,0.7); font-size: 15px; text-decoration: none;">Home</a>
+                        <span style="margin: 0 10px; color:rgba(255,255,255,0.4);">/</span>
+                        <span style="color: #fff; font-size: 15px;">Our Team</span>
+                    </div>
+                </div>
+                
+                <!-- Right Hero Image placeholder -->
+                <div class="col-md-6 col-sm-12 text-right hidden-xs">
+                     <img src="{{ asset('images/KDC-Logo-crop.png') }}" alt="KDC Consultants" style="max-width: 100%; max-height: 150px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9;">
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Content Section -->
     <div class="content section" style="padding: 60px 0;">

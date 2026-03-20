@@ -232,7 +232,8 @@ new class extends Component
             justify-content: center;
             min-height: 140px;
             padding: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .partner-card img {
@@ -244,8 +245,9 @@ new class extends Component
         }
 
         .partner-card:hover {
-            box-shadow: 0 16px 36px rgba(21, 32, 43, 0.08);
-            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(149, 191, 25, 0.15);
+            border-color: #95BF19;
+            transform: translateY(-4px);
         }
 
         .partner-card:hover img {
@@ -318,149 +320,46 @@ new class extends Component
     </style>
 
     <div class="client-page">
-        <main class="page-header-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="title-hr"></div>
-                    </div>
-                    <div class="col-md-8 col-lg-7">
-                        <div class="client-hero-copy">
-                            <h1>Clients, Collaborations & Trusted Partnerships</h1>
+        <!-- Hero Banner matched to Theme -->
+        <div style="position: relative; background-color: #1a4276; overflow: hidden; padding: 110px 0 60px;">
+            <!-- Diagonal Green Accent -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 300px; background-color: #95BF19; transform: skewY(-4deg); transform-origin: bottom left; z-index: 0; opacity: 0.9;"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 280px; background-color: #f9f9f9; transform: skewY(-4deg); transform-origin: bottom left; z-index: 1;"></div>
+            
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="row" style="display:flex; flex-wrap:wrap; align-items:center;">
+                    <!-- Left Title Content -->
+                    <div class="col-md-6 col-sm-12" style="margin-bottom: 30px;">
+                        <div style="width: 50px; height: 6px; background: #fff; margin-bottom: 20px;"></div>
+                        <h1 style="color: #95BF19; font-size: 48px; font-weight: 300; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 1px; line-height: 1.15;">Clients & Partnerships</h1>
+                        <div class="breadcrumb" style="background:transparent; padding:0; margin: 20px 0 0;">
+                            <a href="{{ route('home') }}" style="color: rgba(255,255,255,0.7); font-size: 15px; text-decoration: none;">Home</a>
+                            <span style="margin: 0 10px; color:rgba(255,255,255,0.4);">/</span>
+                            <span style="color: #fff; font-size: 15px;">Clients</span>
                         </div>
+                    </div>
+                    
+                    <!-- Right Hero Image placeholder -->
+                    <div class="col-md-6 col-sm-12 text-right hidden-xs">
+                         <img src="{{ asset('building/banner4.jpg') }}" alt="Partnerships" style="max-width: 100%; max-height: 250px; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 4px solid #fff; object-fit: cover;">
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
 
-        <div class="content">
-            <section class="section-about client-section">
+        <div class="content" style="padding-bottom: 80px; background-color: #f9f9f9;">
+            <section class="client-section" style="padding-top: 60px;">
                 <div class="container">
-                    <div class="row client-grid">
-                        <div class="col-md-6">
-                            <div class="client-copy">
-                                <div class="section-info">
-                                    <div class="title-hr"></div>
-                                    <div class="info-title">Who We Work With</div>
-                                </div>
-                                <div>
-                                    <strong class="section-subtitle">ENDURING CLIENT RELATIONSHIPS</strong>
-                                    <h2 class="section-title section-about-title">A portfolio built on repeat trust and delivery discipline</h2>
-                                    <p class="client-lead">KDC has completed assignments for reputed business houses, institutions and private residences in varying consulting capacities. Each engagement is approached with the same focus on coordination, technical clarity and responsible execution.</p>
-                                    <p>Our client relationships grow from the ability to manage complex project interfaces under one roof, reducing friction between design intent, site realities and budget priorities.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 col-md-offset-1">
-                            <div class="client-media dots-image">
-                                <img alt="KDC clients and partnerships" class="about-img img-responsive" src="{{ asset('building/banner3.jpg') }}">
-                                <div class="dots"></div>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 text-center" style="margin: 0 auto; float: none; margin-bottom: 50px;">
+                            <h2 class="section-title" style="color: #1a4276; margin-bottom: 20px; font-weight: 700;">Our Esteemed Partnerships</h2>
+                            <div style="width: 60px; height: 4px; background: #95BF19; margin: 0 auto 25px;"></div>
+                            <p style="font-size: 16px; color: #666; line-height: 1.8;">KDC has had the privilege of completing assignments for reputed business houses, institutions, and private residences. We are proud of our long-term professional relationships built on strict accountability, efficient delivery, and mutual trust. Below are some of the incredible organizations we have worked alongside.</p>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <section class="client-section">
-                <div class="container">
-                    <div class="row client-grid">
-                        <div class="col-md-6">
-                            <div class="client-panel">
-                                <div class="section-info">
-                                    <div class="title-hr"></div>
-                                    <div class="info-title">Client Advantage</div>
-                                </div>
-                                <h3>Why long-term clients continue to work with KDC</h3>
-                                <p>Clients choose KDC for more than design capability. They rely on structured coordination, practical project leadership and the ability to convert planning into deliverable, buildable outcomes.</p>
-                                <ul class="client-benefit-list">
-                                    @foreach ($clientBenefits as $benefit)
-                                        <li>{{ $benefit }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="client-panel client-panel-muted">
-                                <strong class="section-subtitle">RELATIONSHIP VALUE</strong>
-                                <h3>Partnerships built on accountability</h3>
-                                <p>KDC's client relationships are shaped by professional accountability, faster coordination and consistency in delivery across project stages.</p>
-                                <p>That repeat trust is what allows the studio to work across diverse sectors, project scales and locations while maintaining a clear design and execution process.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="client-section bg-dots">
-                <div class="container">
-                    <div class="row client-grid">
-                        <div class="col-md-3">
-                            <div class="section-info">
-                                <div class="title-hr"></div>
-                                <div class="info-title">Client Experience</div>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="client-testimonial-grid">
-                                @forelse ($clientTestimonials as $testimonial)
-                                    <div class="client-quote-card">
-                                        <img alt="" class="client-quote-icon" src="{{ asset('images/image-icons/icon-quote.png') }}">
-                                        <span class="client-name">{{ $testimonial->name }}</span>
-                                        <span class="client-company">{{ $testimonial->client_info ?: 'Client' }}</span>
-                                        <p>{{ $testimonial->message }}</p>
-                                    </div>
-                                @empty
-                                    <div class="client-quote-card">
-                                        <img alt="" class="client-quote-icon" src="{{ asset('images/image-icons/icon-quote.png') }}">
-                                        <span class="client-name">No testimonials yet</span>
-                                        <span class="client-company">Please add testimonials from Admin Panel</span>
-                                        <p>Once added and marked active, testimonials will appear automatically here.</p>
-                                    </div>
-                                @endforelse
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="client-dark-section">
-                <div class="container">
-                    <div class="row client-grid">
-                        <div class="col-md-5">
-                            <div class="client-dark-copy">
-                                <strong class="section-subtitle">PARTNER NETWORK</strong>
-                                <h2 class="section-title section-about-title">Reliable associations across consultants, vendors and project stakeholders</h2>
-                                <p>KDC's project delivery model depends on disciplined coordination with partner organizations, technical agencies and supply-side stakeholders. These relationships help maintain continuity from documentation through execution.</p>
-                                <div class="client-metric">
-                                    <span class="client-metric-number">{{ $partnerImages->count() }}</span>
-                                    <p>Partner logos currently available in the project asset library.</p>
-                                </div>
-                                <div class="client-metric">
-                                    <span class="client-metric-number">360</span>
-                                    <p>Integrated coordination across architecture, engineering, services and construction teams.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="client-dark-image">
-                                <img alt="KDC partner network" class="img-responsive item-shadow" src="{{ asset('building/industrial-park-factory-building-warehouse_1417-1936.jpg') }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="client-section">
-                <div class="container">
-                    <div class="row client-grid">
-                        <div class="col-md-3">
-                            <div class="section-info">
-                                <div class="title-hr"></div>
-                                <div class="info-title">Partner Logos</div>
-                            </div>
-                        </div>
-                        <div class="col-md-9">
-                            <h2 class="section-title">Associated brands and organizations</h2>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="partner-grid">
                                 @foreach ($partnerImages as $partnerImage)
                                     <div class="partner-card">

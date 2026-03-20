@@ -18,6 +18,7 @@ new class extends Component
             ['label' => 'Projects', 'route' => 'project'],
             ['label' => 'Profile', 'route' => 'profile'],
             ['label' => 'Service', 'route' => 'service'],
+            ['label' => 'Our Team', 'route' => 'our-team'],
             ['label' => 'Clients', 'route' => 'client'],
             ['label' => 'Blog', 'route' => 'blog'],
             ['label' => 'Contact', 'route' => 'contact'],
