@@ -12,6 +12,7 @@ Route::livewire('/client', 'pages::client.client')->name('client');
 Route::livewire('/project', 'pages::project.project')->name('project');
 Route::livewire('/project/{slug}', 'pages::project.project-view')->name('project.detail');
 Route::livewire('/profile', 'pages::profile.profile')->name('profile');
+Route::livewire('/our-team', 'pages::our-team.our-team')->name('our-team');
 
 Route::livewire('/home2', 'pages::home.home2')->name('home2');
 
